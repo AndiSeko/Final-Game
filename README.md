@@ -1,2 +1,2 @@
-# Dieplome
-The latest project for my college.
+# Дипломный проект
+Последний проект для моего колледжа...
