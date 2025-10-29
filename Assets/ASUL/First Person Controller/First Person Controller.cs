@@ -32,6 +32,14 @@ namespace ASUL.FPC
         [Header("Сглаживание поворота камеры")]
         [SerializeField] private float lookSmoothTime = 0.05f;
 
+        [Header("Покачивание камеры")]
+        [SerializeField] private float bobFrequency = 2.0f;
+        [SerializeField] private float bobAmplitude = 0.05f;
+        [SerializeField] private float bobSmoothing = 8f;
+
+        private float bobTimer;
+        private Vector3 cameraDefaultLocalPos;
+
         private Vector2 currentLookVelocity;
         private Vector2 currentLook;
         private Vector2 targetLook;
@@ -47,9 +55,9 @@ namespace ASUL.FPC
         public bool isCanMove;
         public bool isCanSprint;
         public bool isCanJump;
+        public bool isHasHeadBob;
 
         //Внешние полезные свойства
-
         public bool IsMoving {  get { return currentSpeed > 0.1f; } }
 
         // Поля для расчёта вектора
@@ -79,6 +87,7 @@ namespace ASUL.FPC
             Jump();
             Move();
             HandleLook();
+            HandleHeadBob();
         }
 
         private void InitialyzeFields()
@@ -92,6 +101,7 @@ namespace ASUL.FPC
             {
                 cameraTransform = Camera.main.transform;
             }
+            cameraDefaultLocalPos = cameraTransform.localPosition;
         }
 
         #endregion
@@ -154,6 +164,26 @@ namespace ASUL.FPC
 
             cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             transform.Rotate(Vector3.up * mouseX);
+        }
+
+        private void HandleHeadBob()
+        {
+            if (!isHasHeadBob)
+                return;
+
+            if (IsMoving && characterController.isGrounded)
+            {
+                bobTimer += Time.deltaTime * bobFrequency;
+                float bobOffset = Mathf.Sin(bobTimer) * bobAmplitude;
+
+                Vector3 targetPos = cameraDefaultLocalPos + new Vector3(0f, bobOffset, 0f);
+                cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, targetPos, Time.deltaTime * bobSmoothing);
+            }
+            else
+            {
+                bobTimer = 0f;
+                cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, cameraDefaultLocalPos, Time.deltaTime * bobSmoothing);
+            }
         }
 
         public void Move()
