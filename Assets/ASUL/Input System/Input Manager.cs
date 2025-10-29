@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
-
+using ASUL.InputSystem;
 
 namespace ASUL.InputSystem 
 {
     public class InputManager : MonoBehaviour
     {
+        // По желанию можно изменить 
+        private string defaultInputMap = "Player";
+        private CursorLockMode defaultCursorLockMode = CursorLockMode.Locked;
+
         public static InputManager Instance { get; private set; }
 
         public InputSystem_Actions actions;
@@ -35,13 +39,20 @@ namespace ASUL.InputSystem
 
             actions = new();
             actions.Enable();
-            ChangeInputMap("Player");
+
+            maps = new Dictionary<string, InputActionMap>();
+            foreach (var map in actions.asset.actionMaps)
+            {
+                maps[map.name] = map;
+            }
+
+            ChangeInputMap(defaultInputMap, defaultCursorLockMode);
 
         }
 
         private void OnDestroy()
         {
-            if (Instance = this)
+            if (Instance == this)
             {
                 actions.Disable();
                 actions = null;
@@ -61,7 +72,24 @@ namespace ASUL.InputSystem
                 map.Disable();
 
             maps[mapName].Enable();
+        }
 
+        public void ChangeInputMap(string mapName, CursorLockMode cursorLockMode)
+        {
+            if (!maps.ContainsKey(mapName))
+            {
+                Debug.LogWarning($"Input map '{mapName}' не найден!");
+                return;
+            }
+
+            foreach (var map in maps.Values)
+                map.Disable();
+
+            maps[mapName].Enable();
+
+            Cursor.lockState = cursorLockMode;
+
+            Cursor.visible = cursorLockMode != CursorLockMode.Locked;
         }
 
         public IEnumerable<string> GetAvailableMaps() => maps.Keys;
