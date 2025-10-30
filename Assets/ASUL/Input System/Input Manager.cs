@@ -2,13 +2,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
-namespace ASUL.InputSystem 
+namespace ASUL.InputSystem
 {
     public class InputManager : MonoBehaviour
     {
-        // По желанию можно изменить 
+
         private string defaultInputMap = "Player";
         private CursorLockMode defaultCursorLockMode = CursorLockMode.Locked;
+
+        private string previousState;
+        private string currentState;
 
         public static InputManager Instance { get; private set; }
 
@@ -22,9 +25,7 @@ namespace ASUL.InputSystem
             if (Instance != null) return;
 
             GameObject go = new("Input Manager");
-
             Instance = go.AddComponent<InputManager>();
-
             DontDestroyOnLoad(go);
         }
 
@@ -46,7 +47,6 @@ namespace ASUL.InputSystem
             }
 
             ChangeInputMap(defaultInputMap, defaultCursorLockMode);
-
         }
 
         private void OnDestroy()
@@ -67,6 +67,9 @@ namespace ASUL.InputSystem
                 return;
             }
 
+            previousState = currentState;
+            currentState = mapName;
+
             foreach (var map in maps.Values)
                 map.Disable();
 
@@ -81,14 +84,33 @@ namespace ASUL.InputSystem
                 return;
             }
 
+            previousState = currentState;
+            currentState = mapName;
+
             foreach (var map in maps.Values)
                 map.Disable();
 
             maps[mapName].Enable();
 
             Cursor.lockState = cursorLockMode;
-
             Cursor.visible = cursorLockMode != CursorLockMode.Locked;
+        }
+
+        public void RevertToPreviousMap()
+        {
+            if (string.IsNullOrEmpty(previousState) || !maps.ContainsKey(previousState))
+            {
+                Debug.LogWarning("Нет предыдущего состояния для возврата!");
+                return;
+            }
+
+            ChangeInputMap(previousState);
+
+            if (previousState == "Player")
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
 
         public IEnumerable<string> GetAvailableMaps() => maps.Keys;
