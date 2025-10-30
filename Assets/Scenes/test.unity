@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 1795788444}
   - component: {fileID: 1795788443}
   - component: {fileID: 1795788442}
+  - component: {fileID: 1795788446}
   m_Layer: 6
   m_Name: Platform (1)
   m_TagString: Untagged
@@ -456,6 +457,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1795788446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795788441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6188b64d2f637488fc33d0211a7c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Commands: []
 --- !u!1 &1840007204
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,7 +708,7 @@ MonoBehaviour:
   jumpHeight: 1
   mouseSensitivity: 30
   lookSmoothTime: 0.05
-  bobFrequency: 5
+  bobFrequency: 8.85
   bobAmplitude: 0.07
   bobSmoothing: 10
   acceleration: 10
