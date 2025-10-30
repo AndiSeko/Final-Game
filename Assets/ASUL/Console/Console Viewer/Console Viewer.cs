@@ -1,6 +1,10 @@
 using UnityEngine;
 
-public class ConsoleViewer : MonoBehaviour
+namespace ASUL.Console
 {
+    public class ConsoleViewer : MonoBehaviour
+    {
 
+    }
 }
+

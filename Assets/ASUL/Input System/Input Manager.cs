@@ -104,13 +104,13 @@ namespace ASUL.InputSystem
                 return;
             }
 
-            ChangeInputMap(previousState);
-
             if (previousState == "Player")
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
+
+            ChangeInputMap(previousState);
         }
 
         public IEnumerable<string> GetAvailableMaps() => maps.Keys;
