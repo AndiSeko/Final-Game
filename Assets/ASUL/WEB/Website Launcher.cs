@@ -9,4 +9,12 @@ public class WebsiteLauncher : MonoBehaviour
             Application.OpenURL(url);
         }
     }
+
+    public static void LaunchWebsiteStatic(string url)
+    {
+        if (!string.IsNullOrEmpty(url))
+        {
+            Application.OpenURL(url);
+        }
+    }
 }

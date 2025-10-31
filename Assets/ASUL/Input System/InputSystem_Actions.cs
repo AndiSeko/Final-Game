@@ -1095,6 +1095,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tutotial"",
+                    ""type"": ""Button"",
+                    ""id"": ""b3dabf7e-e539-4de1-8a1b-6346b34c9ee1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1117,6 +1126,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3dbdac87-cc8e-4ff9-a2bf-1f1a94e40707"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Tutotial"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1215,6 +1235,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Console = asset.FindActionMap("Console", throwIfNotFound: true);
         m_Console_Back = m_Console.FindAction("Back", throwIfNotFound: true);
         m_Console_Enter = m_Console.FindAction("Enter", throwIfNotFound: true);
+        m_Console_Tutotial = m_Console.FindAction("Tutotial", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1700,6 +1721,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private List<IConsoleActions> m_ConsoleActionsCallbackInterfaces = new List<IConsoleActions>();
     private readonly InputAction m_Console_Back;
     private readonly InputAction m_Console_Enter;
+    private readonly InputAction m_Console_Tutotial;
     /// <summary>
     /// Provides access to input actions defined in input action map "Console".
     /// </summary>
@@ -1719,6 +1741,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Console/Enter".
         /// </summary>
         public InputAction @Enter => m_Wrapper.m_Console_Enter;
+        /// <summary>
+        /// Provides access to the underlying input action "Console/Tutotial".
+        /// </summary>
+        public InputAction @Tutotial => m_Wrapper.m_Console_Tutotial;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1751,6 +1777,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Enter.started += instance.OnEnter;
             @Enter.performed += instance.OnEnter;
             @Enter.canceled += instance.OnEnter;
+            @Tutotial.started += instance.OnTutotial;
+            @Tutotial.performed += instance.OnTutotial;
+            @Tutotial.canceled += instance.OnTutotial;
         }
 
         /// <summary>
@@ -1768,6 +1797,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Enter.started -= instance.OnEnter;
             @Enter.performed -= instance.OnEnter;
             @Enter.canceled -= instance.OnEnter;
+            @Tutotial.started -= instance.OnTutotial;
+            @Tutotial.performed -= instance.OnTutotial;
+            @Tutotial.canceled -= instance.OnTutotial;
         }
 
         /// <summary>
@@ -2050,5 +2082,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnEnter(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Tutotial" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTutotial(InputAction.CallbackContext context);
     }
 }

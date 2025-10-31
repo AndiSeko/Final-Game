@@ -1009,6 +1009,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Tutotial",
+                    "type": "Button",
+                    "id": "b3dabf7e-e539-4de1-8a1b-6346b34c9ee1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1031,6 +1040,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3dbdac87-cc8e-4ff9-a2bf-1f1a94e40707",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Tutotial",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
