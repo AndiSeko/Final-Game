@@ -1086,6 +1086,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e4723e8-1071-4fcd-b20d-604940f74204"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1095,8 +1104,19 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/backquote"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd799317-63c2-458c-afd3-da3d052eb437"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Enter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1194,6 +1214,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // Console
         m_Console = asset.FindActionMap("Console", throwIfNotFound: true);
         m_Console_Back = m_Console.FindAction("Back", throwIfNotFound: true);
+        m_Console_Enter = m_Console.FindAction("Enter", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1678,6 +1699,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Console;
     private List<IConsoleActions> m_ConsoleActionsCallbackInterfaces = new List<IConsoleActions>();
     private readonly InputAction m_Console_Back;
+    private readonly InputAction m_Console_Enter;
     /// <summary>
     /// Provides access to input actions defined in input action map "Console".
     /// </summary>
@@ -1693,6 +1715,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Console/Back".
         /// </summary>
         public InputAction @Back => m_Wrapper.m_Console_Back;
+        /// <summary>
+        /// Provides access to the underlying input action "Console/Enter".
+        /// </summary>
+        public InputAction @Enter => m_Wrapper.m_Console_Enter;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1722,6 +1748,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Back.started += instance.OnBack;
             @Back.performed += instance.OnBack;
             @Back.canceled += instance.OnBack;
+            @Enter.started += instance.OnEnter;
+            @Enter.performed += instance.OnEnter;
+            @Enter.canceled += instance.OnEnter;
         }
 
         /// <summary>
@@ -1736,6 +1765,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Back.started -= instance.OnBack;
             @Back.performed -= instance.OnBack;
             @Back.canceled -= instance.OnBack;
+            @Enter.started -= instance.OnEnter;
+            @Enter.performed -= instance.OnEnter;
+            @Enter.canceled -= instance.OnEnter;
         }
 
         /// <summary>
@@ -2011,5 +2043,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Enter" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEnter(InputAction.CallbackContext context);
     }
 }

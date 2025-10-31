@@ -259,7 +259,7 @@ MonoBehaviour:
       m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
-  m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
+  m_SelectionColor: {r: 0, g: 0.381132, b: 0.2722201, a: 0.7529412}
   m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
@@ -1087,12 +1087,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879802445}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960.05396, y: -539.96967, z: 0}
+  m_LocalScale: {x: 1.9414641, y: 1.9414641, z: 1.9414641}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2017348329}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &910638409
 GameObject:
@@ -2210,6 +2210,7 @@ GameObject:
   - component: {fileID: 1605595198}
   - component: {fileID: 1605595201}
   - component: {fileID: 1605595202}
+  - component: {fileID: 1605595203}
   m_Layer: 5
   m_Name: Console
   m_TagString: Untagged
@@ -2305,6 +2306,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpenedInAwake: 0
+  viewer: {fileID: 1605595203}
+--- !u!114 &1605595203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605595196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e7cf0d7ef0d8f418bd17cfc8620d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _commandLine: {fileID: 177032995}
+  _consoleLogs: {fileID: 1527721631}
 --- !u!1 &1719371677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3029,6 +3045,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1605595197}
+  - {fileID: 879802448}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3330,4 +3347,3 @@ SceneRoots:
   - {fileID: 2089895493}
   - {fileID: 2032952878}
   - {fileID: 2017348329}
-  - {fileID: 879802448}

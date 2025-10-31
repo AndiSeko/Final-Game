@@ -9,6 +9,8 @@ namespace ASUL.Console
 {
     public class ConsoleLauncher : CanvasGroupLauncher
     {
+        [SerializeField] private ConsoleViewer viewer;
+
         private void OnEnable()
         {
             InputManager.Instance.actions.Player.Console.performed += Open;
@@ -30,12 +32,16 @@ namespace ASUL.Console
         {
             base.Open(ctx);
             InputManager.Instance.ChangeInputMap("Console", CursorLockMode.None);
+
+            viewer.IsEnable = true;
         }
 
         protected override void Close(InputAction.CallbackContext ctx)
         {
             base.Close(ctx);
             InputManager.Instance.RevertToPreviousMap();
+
+            viewer.IsEnable = false;
         }
 
 
