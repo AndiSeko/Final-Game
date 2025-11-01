@@ -32,7 +32,7 @@ namespace ASUL.Console
 
         private void Info()
         {
-            ConsoleViewer.OnConsoleLog?.Invoke("<color=#36CF8C>Console v 2.0</color>" +
+            ConsoleViewer.OnConsoleLog?.Invoke("<style=Console><color=#36CF8C>Console v 2.0</color></style>" +
                 "\nCreated by Andi Seko" +
                 "\n© ASUL 2025" +
                 "\nFor additional information, read the documentation by pressing the f1 key.");
