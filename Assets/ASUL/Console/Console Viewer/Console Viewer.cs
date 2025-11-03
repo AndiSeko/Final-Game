@@ -3,6 +3,8 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace ASUL.Console
 {
@@ -14,9 +16,11 @@ namespace ASUL.Console
 
         #region Ёлементы интерфейса
 
-        [SerializeField] private TMP_InputField _commandLine;
+        [SerializeField] private TMP_InputField commandLine;
 
-        [SerializeField] private TextMeshProUGUI _consoleLogs;
+        [SerializeField] private TextMeshProUGUI consoleLogs;
+
+        [SerializeField] private ScrollRect logsScrollRect;
 
         #endregion
 
@@ -44,7 +48,7 @@ namespace ASUL.Console
 
         private void Awake()
         {
-            _commandLine.onValidateInput += (text, charIndex, addedChar) =>
+            commandLine.onValidateInput += (text, charIndex, addedChar) =>
             {
                 if (addedChar == '`' || addedChar == 'Є')
                 {
@@ -59,37 +63,38 @@ namespace ASUL.Console
         {
             if (enable)
             {
-                _commandLine.Select();
-                _commandLine.ActivateInputField();
+                commandLine.Select();
+                commandLine.ActivateInputField();
             }
             else
             {
-                _commandLine.DeactivateInputField();
+                commandLine.DeactivateInputField();
                 UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
             }
         }
 
         private void OnEnterPress(InputAction.CallbackContext ctx)
         {
-            CommandProcessor.OnSendCommand?.Invoke(_commandLine.text);
-            _commandLine.text = string.Empty;
+            CommandProcessor.OnSendCommand?.Invoke(commandLine.text);
+            commandLine.text = string.Empty;
+            ScrollToTheEnd();
             SelectCommandLine();
         }
 
         public void ClearConsole()
         {
-            _consoleLogs.text = string.Empty;
+            consoleLogs.text = string.Empty;
             SelectCommandLine();
         }
 
         private void Log(string message)
         {
-            _consoleLogs.text += message + "\n";  
+            consoleLogs.text += message + "\n";  
         }
 
         private void LogError(string message)
         {
-            _consoleLogs.text += $"<color=red>{message}</color>" + "\n";
+            consoleLogs.text += $"<color=red>{message}</color>" + "\n";
         }
 
         private void OpenTutorial(InputAction.CallbackContext ctx)
@@ -99,8 +104,14 @@ namespace ASUL.Console
 
         private void SelectCommandLine()
         {
-            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(_commandLine.gameObject);
-            _commandLine.ActivateInputField();
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(commandLine.gameObject);
+            commandLine.ActivateInputField();
+        }
+
+        private void ScrollToTheEnd()
+        {
+            UnityEngine.Canvas.ForceUpdateCanvases();
+            logsScrollRect.verticalNormalizedPosition = 0f;
         }
 
     }

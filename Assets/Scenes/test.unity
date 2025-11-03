@@ -1310,7 +1310,7 @@ MonoBehaviour:
     m_Left: 20
     m_Right: 55
     m_Top: 20
-    m_Bottom: 0
+    m_Bottom: 20
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -2381,8 +2381,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e7cf0d7ef0d8f418bd17cfc8620d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _commandLine: {fileID: 177032995}
-  _consoleLogs: {fileID: 1527721631}
+  commandLine: {fileID: 177032995}
+  consoleLogs: {fileID: 1527721631}
+  logsScrollRect: {fileID: 856361211}
 --- !u!114 &1605595204
 MonoBehaviour:
   m_ObjectHideFlags: 0
