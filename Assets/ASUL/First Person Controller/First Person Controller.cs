@@ -152,7 +152,7 @@ namespace ASUL.FPC
         {
             Vector2 rawLook = InputManager.Instance.actions.Player.Look.ReadValue<Vector2>();
 
-            targetLook = rawLook * 0.5f * mouseSensitivity;
+            targetLook = rawLook * 0.65f * mouseSensitivity;
 
             currentLook = Vector2.SmoothDamp(currentLook, targetLook, ref currentLookVelocity, lookSmoothTime);
 

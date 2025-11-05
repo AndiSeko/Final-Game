@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ASUL.EventSystem
 {
-    [CreateAssetMenu(fileName = "EventFile", menuName = "ASUP/EventFile"), Serializable]
+    [CreateAssetMenu(fileName = "EventFile", menuName = "ASUL/EventFile"), Serializable]
     public class EventFile : ScriptableObject
     {
         public EventStep[] events;

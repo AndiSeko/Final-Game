@@ -17,9 +17,6 @@ namespace ASUL.EventSystem
         [Tooltip("Задержка после выполнения шага (в секундах)")]
         public float delayAfter = 0f;
 
-        [Tooltip("Вложенные шаги, которые выполнятся после этого шага")]
-        public EventStep[] nestedSteps;
-
         public IEnumerator Execute(MonoBehaviour runner)
         {
             IEnumerator routine = null;
@@ -27,13 +24,6 @@ namespace ASUL.EventSystem
 
             if (routine != null)
                 yield return runner.StartCoroutine(routine);
-
-            if (nestedSteps != null)
-            {
-                foreach (var step in nestedSteps)
-                    if (step != null)
-                        yield return step.Execute(runner);
-            }
 
             if (delayAfter > 0f)
                 yield return new WaitForSeconds(delayAfter);
