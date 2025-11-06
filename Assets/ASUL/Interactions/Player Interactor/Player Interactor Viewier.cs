@@ -1,16 +1,28 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerInteractorViewier : MonoBehaviour
+namespace ASUL.Interactions
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class PlayerInteractorViewier : MonoBehaviour
     {
-        
+        [SerializeField] private Image cursor;
+        [SerializeField] private Animator cursorAnimator;
+
+        public void ToggleCursorSelection(bool value)
+        {
+            try
+            {
+                Color cursorColor = cursor.color;
+                cursorColor.a = value ? 1f : 0.5f;
+                cursor.color = cursorColor;
+
+                cursorAnimator.SetBool("IsSelected", value);
+            }
+            catch
+            {
+                Debug.LogError("Не задан курсор!!!");
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

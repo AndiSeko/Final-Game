@@ -22,7 +22,6 @@ namespace ASUL.Interactions
             {
                 outline.OutlineWidth = outlineConfig.OutlineWidth;
                 outline.OutlineColor = outlineConfig.OutlineColor;
-                outline.OutlineMode = outlineConfig.OutlineMode;
             }
             catch
             {
