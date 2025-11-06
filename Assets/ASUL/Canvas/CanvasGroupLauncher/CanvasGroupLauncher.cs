@@ -10,7 +10,7 @@ namespace ASUL.Canvas
 
         protected CanvasGroup canvasGroup;
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             canvasGroup = GetComponent<CanvasGroup>();
 
@@ -22,6 +22,14 @@ namespace ASUL.Canvas
             {
                 Close();
             }
+        }
+
+        public void ToggleOpen(bool value)
+        {
+            if (value)
+                Open();
+            else
+                Close();
         }
 
         protected virtual void Open(UnityEngine.InputSystem.InputAction.CallbackContext ctx)

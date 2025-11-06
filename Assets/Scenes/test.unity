@@ -811,6 +811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1634771629}
   - component: {fileID: 1634771630}
+  - component: {fileID: 1634771631}
   m_Layer: 5
   m_Name: Player Interactor Viewier
   m_TagString: Untagged
@@ -850,8 +851,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127c1fa10e48e494cb8f69258a114d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOpenedInAwake: 1
   cursor: {fileID: 701833992}
   cursorAnimator: {fileID: 701833994}
+--- !u!225 &1634771631
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634771628}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1719371677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1615,7 @@ MonoBehaviour:
   acceleration: 10
   deceleration: 10
   isCanMove: 1
+  isCanRotateCamera: 1
   isCanSprint: 1
   isCanJump: 0
   isHasHeadBob: 1

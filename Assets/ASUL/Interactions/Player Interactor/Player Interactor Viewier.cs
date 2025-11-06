@@ -1,10 +1,13 @@
+using ASUL.Canvas;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace ASUL.Interactions
 {
-    public class PlayerInteractorViewier : MonoBehaviour
+    public class PlayerInteractorViewier : CanvasGroupLauncher
     {
+
         [SerializeField] private Image cursor;
         [SerializeField] private Animator cursorAnimator;
 

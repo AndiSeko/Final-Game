@@ -53,6 +53,7 @@ namespace ASUL.FPC
         [Header("Параметры передвижения")]
 
         public bool isCanMove;
+        public bool isCanRotateCamera;
         public bool isCanSprint;
         public bool isCanJump;
         public bool isHasHeadBob;
@@ -66,7 +67,7 @@ namespace ASUL.FPC
 
         // Необходимые объекты
 
-        [Header("Необходимые объекты (characterController не обязателен)")]
+        [Header("Необходимые объекты (characterController не обязателен для вставки сюда)")]
         [SerializeField] private CharacterController characterController;
         [SerializeField] private Transform cameraTransform;
 
@@ -150,6 +151,9 @@ namespace ASUL.FPC
         }
         private void HandleLook()
         {
+            if (!isCanRotateCamera)
+                return;
+
             Vector2 rawLook = InputManager.Instance.actions.Player.Look.ReadValue<Vector2>();
 
             targetLook = rawLook * 0.65f * mouseSensitivity;

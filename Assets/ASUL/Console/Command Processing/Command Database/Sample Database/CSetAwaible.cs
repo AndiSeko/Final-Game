@@ -8,11 +8,18 @@ namespace ASUL.Console
     {
         public static void Interact(bool value)
         {
-            PlayerInteractor[] interactors = Object.FindObjectsByType<PlayerInteractor>(FindObjectsSortMode.None);
+            PlayerInteractor[] interactors = FindObjectsByType<PlayerInteractor>(FindObjectsSortMode.None);
 
             foreach (PlayerInteractor interactor in interactors)
             {
                 interactor.IsAwaible = value;
+            }
+
+            PlayerInteractorViewier[] viewiers = FindObjectsByType<PlayerInteractorViewier>(FindObjectsSortMode.None);
+
+            foreach (var viewier in viewiers)
+            {
+                viewier.ToggleOpen(value);
             }
 
             ConsoleViewer.OnConsoleLog?.Invoke($"The interaction availability has been successfully changed to {value}.");
@@ -20,7 +27,7 @@ namespace ASUL.Console
         
         public static void Walk(bool value)
         {
-            FirstPersonController[] controllers = Object.FindObjectsByType<FirstPersonController>(FindObjectsSortMode.None);
+            FirstPersonController[] controllers = FindObjectsByType<FirstPersonController>(FindObjectsSortMode.None);
 
             foreach (FirstPersonController controller in controllers)
             {
@@ -32,7 +39,7 @@ namespace ASUL.Console
 
         public static void Run(bool value)
         {
-            FirstPersonController[] controllers = Object.FindObjectsByType<FirstPersonController>(FindObjectsSortMode.None);
+            FirstPersonController[] controllers = FindObjectsByType<FirstPersonController>(FindObjectsSortMode.None);
 
             foreach (FirstPersonController controller in controllers)
             {
@@ -44,7 +51,7 @@ namespace ASUL.Console
 
         public static void Jump(bool value)
         {
-            FirstPersonController[] controllers = Object.FindObjectsByType<FirstPersonController>(FindObjectsSortMode.None);
+            FirstPersonController[] controllers = FindObjectsByType<FirstPersonController>(FindObjectsSortMode.None);
 
             foreach (FirstPersonController controller in controllers)
             {
