@@ -5,6 +5,8 @@ namespace ASUL.Interactions
     public class PlayerInteractor : MonoBehaviour
     {
 
+        [field: SerializeField] public bool IsAwaible { get; set; } = true;
+
         [SerializeField] private float interactionDistance = 1f;
         [SerializeField] private LayerMask interactableMask;
 
@@ -21,7 +23,20 @@ namespace ASUL.Interactions
 
         private void Detection()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (!IsAwaible)
+            {
+                if (currentTarget != null)
+                {
+                    viewier.ToggleCursorSelection(false);
+                    currentTarget.SelectionToggle(false);
+                    currentTarget = null;
+                }
+
+                return;
+            }
+
+            Vector3 screenCenter = new(Screen.width / 2f, Screen.height / 2f, 0f);
+            Ray ray = Camera.main.ScreenPointToRay(screenCenter);
 
             if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance, interactableMask))
             {

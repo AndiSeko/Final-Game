@@ -24,7 +24,8 @@ namespace ASUL.Console
             switch (command.primaryParameter)
             {
                 case "info": Info(); break;
-                case "status": Status(); break;
+                case "setawaible": SetAwaible(command); break;
+
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: invalid syntax!"); break;
             }
         }
@@ -46,12 +47,30 @@ namespace ASUL.Console
                 $"\nUnity version: {Application.unityVersion}");
         }
 
-        private void Status()
+        private void SetAwaible(Command command)
         {
-            ConsoleViewer.OnConsoleLog?.Invoke("<style=Miku>Game Status</style>");
+            bool commandValue;
+
+            switch (command.value)
+            {
+                case "true": case "1": commandValue = true; break;
+                case "false": case "0": commandValue = false; break;
+                default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: invalid value, use: 1/0 or true/false!"); return;
+            }
+
+            switch (command.secondaryParameter)
+            {
+                case "interact": CSetAwaible.Interact(commandValue); break;
+                case "walk": CSetAwaible.Walk(commandValue); break;
+                case "run": CSetAwaible.Run(commandValue); break;
+                case "jump": CSetAwaible.Jump(commandValue); break;
+                default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: secondary parameter is invalid!"); return;
+            }
+
         }
 
         #endregion
+
 
 
     }
