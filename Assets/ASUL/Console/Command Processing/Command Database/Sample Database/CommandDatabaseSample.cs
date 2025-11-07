@@ -25,6 +25,7 @@ namespace ASUL.Console
             {
                 case "info": Info(); break;
                 case "setawaible": SetAwaible(command); break;
+                case "setpreset": SetPreset(command); break;
 
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: invalid syntax!"); break;
             }
@@ -64,9 +65,25 @@ namespace ASUL.Console
                 case "walk": CSetAwaible.Walk(commandValue); break;
                 case "run": CSetAwaible.Run(commandValue); break;
                 case "jump": CSetAwaible.Jump(commandValue); break;
+                case "look": CSetAwaible.Look(commandValue); break;
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: secondary parameter is invalid!"); return;
             }
 
+        }
+
+        private void SetPreset(Command command)
+        {
+            switch (command.secondaryParameter)
+            {
+                case "play": CSetPreset.Play(); break;
+                case "sprint": CSetPreset.Sprint(); break;
+                case "look": CSetPreset.Look(); break;
+                case "jump": CSetPreset.Jump(); break;
+                case "cutscene": CSetPreset.Cutscene(); break;
+                case "full": CSetPreset.Full(); break;
+
+                default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: secondary parameter is invalid!"); return;
+            }
         }
 
         #endregion

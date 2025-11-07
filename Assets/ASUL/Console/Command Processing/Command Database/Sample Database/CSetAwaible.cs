@@ -61,6 +61,18 @@ namespace ASUL.Console
             ConsoleViewer.OnConsoleLog?.Invoke($"The walking availability has been successfully changed to {value}.");
         }
 
+        public static void Look(bool value)
+        {
+            FirstPersonController[] controllers = FindObjectsByType<FirstPersonController>(FindObjectsSortMode.None);
+
+            foreach (FirstPersonController controller in controllers)
+            {
+                controller.isCanRotateCamera = value;
+            }
+
+            ConsoleViewer.OnConsoleLog?.Invoke($"The looking availability has been successfully changed to {value}.");
+        }
+
     }
 
 }
