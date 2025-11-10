@@ -8,6 +8,8 @@ namespace ASUL.Interactions
     {
         public virtual bool IsInteractable { get; set; }
 
+        public virtual bool IsInteract { get; set; } = false;
+
         public EventStep[] additionalEvents;
 
         public InteractableOutlineConfig outlineConfig;
@@ -33,8 +35,13 @@ namespace ASUL.Interactions
 
         public virtual void Interact()
         {
+            if (IsInteract)
+                return;
+            else
+                IsInteract = true;
             EventManager.LaunchEvent(additionalEvents);
             Animate();
+            IsInteract = false;
         }
 
         public virtual void SelectionToggle(bool isSelected)

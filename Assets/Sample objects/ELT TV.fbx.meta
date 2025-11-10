@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4cd2976558869f741bec09aca38455fa
+guid: 1d5a64b988b60e04e8c1dbf328ea9ed0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,43 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Base
-    second: {fileID: 2100000, guid: 87e37a157ac10c5489f3bd3d000628a0, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 230b8607211495149bb622f967e3cf9b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Black
-    second: {fileID: 2100000, guid: a565a4c5c58e751419dc6d524e204525, type: 2}
+      name: Material.001
+    second: {fileID: 2100000, guid: 7bf4d6b1039024d418b69134a2c3d235, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Door
-    second: {fileID: 2100000, guid: 874cbe0b557398c4191cbaebf13613da, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: f8b893e998c0a8642a4a5d7afa069c7a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Light
-    second: {fileID: 2100000, guid: 4e6648fe25a81f84f8c8a57bb1ffaea3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: bdb297d354eb9a14dab8bcf5e5b66b9f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Number
-    second: {fileID: 2100000, guid: 726ceb3360d5b8145abcd24991441268, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Red
-    second: {fileID: 2100000, guid: 75652d1e7b9b86d4fba6bd3cbcbfeb6d, type: 2}
+      name: Material.002
+    second: {fileID: 2100000, guid: 9537788c2b027d44c851635abc6b3708, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -108,8 +83,8 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 70
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
