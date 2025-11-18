@@ -61,6 +61,21 @@ namespace ASUL.FPC
         //Внешние полезные свойства
         public bool IsMoving {  get { return currentSpeed > 0.1f; } }
 
+        public Vector2 Direction 
+        {  
+            get
+            {
+                try
+                {
+                    return InputManager.Instance.actions.Player.Move.ReadValue<Vector2>();
+                }
+                catch
+                {
+                    return Vector2.zero;
+                }
+            } 
+        }
+
         // Поля для расчёта вектора
 
         private Vector3 velocity;
