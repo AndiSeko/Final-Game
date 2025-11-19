@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1d5a64b988b60e04e8c1dbf328ea9ed0
+guid: 896637b23b0dfca4a91205aca2f32d5f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 230b8607211495149bb622f967e3cf9b, type: 2}
+      name: Inside level
+    second: {fileID: 2100000, guid: 9829399c3f93b2242b7e277f97128fab, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.001
-    second: {fileID: 2100000, guid: 7bf4d6b1039024d418b69134a2c3d235, type: 2}
+    second: {fileID: 2100000, guid: 1d865138cea01544cbb2a01e9a52a11a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.002
-    second: {fileID: 2100000, guid: 9537788c2b027d44c851635abc6b3708, type: 2}
+    second: {fileID: 2100000, guid: 0262be50df9982d4f8a07996aa4acb8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arm
+    second: {fileID: 2100000, guid: a024ddb2db202b34c82db8cdf2b80046, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base metal
+    second: {fileID: 2100000, guid: 6b15661ad792f6548b16d056ad89975c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,10 +55,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.3
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -83,8 +93,8 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 70
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
@@ -103,7 +113,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.003
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

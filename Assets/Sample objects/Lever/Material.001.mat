@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7943480184620455851
+--- !u!114 &-4448117175660867425
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material
+  m_Name: Material.001
   m_Shader: {fileID: -6465566751694194690, guid: 84d174924414faf42818c43a13ce2554, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -78,7 +78,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shadow_Texture:
-        m_Texture: {fileID: 2800000, guid: b4a339d76d81c094b89a68b8c83ba15c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5fda8164e3be1784fb792d32489e49e4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -119,7 +119,7 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0.6559633
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -129,8 +129,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Shadow_Size: 1
-    - _Size: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0.6559633
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -140,13 +139,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
-    - _Color: {r: 0.4264151, g: 0.08608756, b: 0.08608756, a: 1}
+    - _BaseColor: {r: 0.31657603, g: 0.31657603, b: 0.31657603, a: 1}
+    - _Color: {r: 0.316576, g: 0.316576, b: 0.316576, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Shadow_Offset: {r: 10, g: 10, b: 0, a: 0}
-    - _Shadow_Scale: {r: 0, g: 0, b: 0, a: 0}
-    - _Shadow_Size: {r: 0, g: 0, b: 0, a: 0}
-    - _Shadow_Tiling: {r: 5, g: 5, b: 0, a: 0}
+    - _Shadow_Offset: {r: 1, g: 1, b: 0, a: 0}
+    - _Shadow_Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
