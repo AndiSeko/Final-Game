@@ -1,86 +1,70 @@
-using System;
+using ASUL.FPC.Animations;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ASUL.FPC.Animations
 {
     public class BodyManipulator : MonoBehaviour
     {
-        private Animator animator;
-        [field: SerializeField] public bool IsActive { get; set; } = true;
+        [SerializeField] private BodyControlPreset[] presets;
+        [SerializeField] private Transform[] targets;
+        [SerializeField] private int priority = 100;
 
-        [SerializeField] private BodyManipulatorConnection[] connections;
-
-        private void Start()
+        [SerializeField] private bool _isActive = false;
+        public bool IsActive
         {
-            animator = BodyDatabase.instance.GetAnimator();
-            FirstPersonAnimator.OnExternalKinemation += IK;
+            get => _isActive;
+            set => _isActive = value;
         }
 
-        private void IK(Animator animator)
-        {
-            if (!IsActive || animator == null) return;
+        private bool currentActiveState = false;
+        private readonly List<BodyControlRequest> myRequests = new();
 
-            foreach (var connection in connections)
+        private void Update()
+        {
+            if (currentActiveState != _isActive)
             {
-                BodyConnector.Connect(connection, animator);
+                if (_isActive) Activate();
+                else Deactivate();
+                currentActiveState = _isActive;
             }
+        }
+
+        public void Activate()
+        {
+            if (myRequests.Count > 0) return;
+
+            for (int i = 0; i < presets.Length && i < targets.Length; i++)
+            {
+                if (presets[i] == null || targets[i] == null) continue;
+
+                var req = new BodyControlRequest
+                {
+                    preset = presets[i],
+                    target = targets[i],
+                    priority = priority,
+                    currentWeight = 0f,
+                    targetWeight = 1f
+                };
+
+                myRequests.Add(req);
+                BodyControlSystem.Instance.Register(req);
+            }
+        }
+
+        public void Deactivate()
+        {
+            foreach (var req in myRequests)
+                req.targetWeight = 0f;
+
+            myRequests.Clear();
         }
 
         private void OnDestroy()
         {
-            FirstPersonAnimator.OnExternalKinemation -= IK;
+            foreach (var req in myRequests)
+                BodyControlSystem.Instance.Unregister(req);
+            myRequests.Clear();
         }
-    }
-
-    public static class BodyConnector
-    {
-        public static void Connect(BodyManipulatorConnection connection, Animator animator)
-        {
-            if (connection.Target == null) return;
-
-            switch (connection.Type)
-            {
-                case BodyManipulatorConnection.ConnectionType.IKGoal:
-                    animator.SetIKPositionWeight(connection.Goal, connection.Weight);
-                    animator.SetIKRotationWeight(connection.Goal, connection.Weight);
-
-                    animator.SetIKPosition(connection.Goal, connection.Target.position);
-                    animator.SetIKRotation(connection.Goal, connection.Target.rotation);
-                    break;
-
-                case BodyManipulatorConnection.ConnectionType.Head:
-                    animator.SetLookAtWeight(connection.Weight);
-                    animator.SetLookAtPosition(connection.Target.position);
-                    break;
-
-                case BodyManipulatorConnection.ConnectionType.Body:
-                    Transform body = BodyDatabase.instance.GetBody();
-                    if (body != null)
-                    {
-                        body.rotation = Quaternion.RotateTowards(
-                            body.rotation,
-                            Quaternion.LookRotation(connection.Target.position - body.position),
-                            5f
-                        );
-                    }
-                    break;
-            }
-        }
-    }
-
-    [Serializable]
-    public class BodyManipulatorConnection
-    {
-        public enum ConnectionType
-        {
-            IKGoal,  
-            Head,
-            Body 
-        }
-
-        public ConnectionType Type;
-        public AvatarIKGoal Goal; 
-        public Transform Target;
-        [Range(0f, 1f)] public float Weight = 1f;
     }
 }
