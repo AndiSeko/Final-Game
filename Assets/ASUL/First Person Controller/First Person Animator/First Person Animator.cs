@@ -17,13 +17,13 @@ namespace ASUL.FPC.Animations
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private Transform eyesZoneTransform;
 
-        private bool canSyncCamera = false;
+        private bool isSafePeriod = true;
+        private int frameCounter = 0;
+        private const float MAX_SAFE_DISTANCE = 0.5f; 
 
         private IEnumerator Start()
         {
             yield return null;
-            yield return null;
-            canSyncCamera = true;
         }
 
         private void Update()
@@ -38,8 +38,24 @@ namespace ASUL.FPC.Animations
 
         private void LateUpdate()
         {
-            if (!canSyncCamera) return;
             if (eyesZoneTransform == null || cameraTransform == null) return;
+
+            if (isSafePeriod)
+            {
+                frameCounter++;
+
+                float distance = Vector3.Distance(cameraTransform.position, eyesZoneTransform.position);
+
+                if (distance > MAX_SAFE_DISTANCE)
+                {
+                    return;
+                }
+
+                if (frameCounter >= 3)
+                {
+                    isSafePeriod = false;
+                }
+            }
 
             cameraTransform.position = eyesZoneTransform.position;
         }
