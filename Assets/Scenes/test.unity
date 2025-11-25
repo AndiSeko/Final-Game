@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IsInteractable>k__BackingField: 1
-  additionalEvents: []
+  events: []
   outlineConfig: {fileID: 11400000, guid: 3b542601fa80b5742a190ddb7af4c733, type: 2}
   manipulator: {fileID: 829468104}
   animator: {fileID: 1012562677}
@@ -1036,24 +1036,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1724107452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147653365566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!65 &1724107453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1193,23 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IsInteractable>k__BackingField: 1
-  additionalEvents:
-  - unityEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 919132147653365566}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    delayAfter: 0
+  events: []
   outlineConfig: {fileID: 11400000, guid: 3b542601fa80b5742a190ddb7af4c733, type: 2}
 --- !u!65 &1754977155
 BoxCollider:
@@ -1405,7 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IsInteractable>k__BackingField: 1
-  additionalEvents: []
+  events: []
   outlineConfig: {fileID: 11400000, guid: 3b542601fa80b5742a190ddb7af4c733, type: 2}
 --- !u!114 &1795788449
 MonoBehaviour:
@@ -2180,38 +2146,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450651845531012}
-  - component: {fileID: 919132147653365567}
-  - component: {fileID: 1724107452}
   - component: {fileID: 1724107453}
   - component: {fileID: 919132147653365568}
-  - component: {fileID: 919132147653365569}
   m_Layer: 7
   m_Name: lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &919132147653365567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147653365566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22458434df147c343bfcae7740b1847d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <IsInteractable>k__BackingField: 1
-  additionalEvents: []
-  outlineConfig: {fileID: 11400000, guid: 3b542601fa80b5742a190ddb7af4c733, type: 2}
-  manipulator: {fileID: 1911870040}
-  animator: {fileID: 919132147653365568}
-  fixator: {fileID: 0}
-  delaytime: 0.5
-  animationToggleValue: 0
+  m_IsActive: 1
 --- !u!95 &919132147653365568
 Animator:
   serializedVersion: 7
@@ -2234,22 +2177,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &919132147653365569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147653365566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d11c5f377ca212f47a9a2016c3aeafba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetBodyPosition: {fileID: 0}
-  targetCameraPosition: {fileID: 0}
-  transitionTime: 1
-  bodyDatabase: {fileID: 0}
 --- !u!1 &1024903802155233994
 GameObject:
   m_ObjectHideFlags: 0
@@ -3483,6 +3410,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2980399996071987399, guid: 30d83197aecced041a30d15716efba57, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980399996071987399, guid: 30d83197aecced041a30d15716efba57, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3501,6 +3432,18 @@ PrefabInstance:
     - target: {fileID: 7821350480616813881, guid: 30d83197aecced041a30d15716efba57, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850840241118871731, guid: 30d83197aecced041a30d15716efba57, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850840241118871731, guid: 30d83197aecced041a30d15716efba57, type: 3}
+      propertyPath: m_fontSize
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850840241118871731, guid: 30d83197aecced041a30d15716efba57, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8513820440204347883, guid: 30d83197aecced041a30d15716efba57, type: 3}
       propertyPath: m_Pivot.x

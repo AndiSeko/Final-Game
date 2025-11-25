@@ -10,7 +10,7 @@ namespace ASUL.Interactions
 
         public virtual bool IsInteract { get; set; } = false;
 
-        public EventStep[] additionalEvents;
+        public EventStep[] events;
 
         public InteractableOutlineConfig outlineConfig;
 
@@ -40,7 +40,7 @@ namespace ASUL.Interactions
                 return;
             else
                 IsInteract = true;
-            EventManager.LaunchEvent(additionalEvents);
+            EventManager.LaunchEvent(events);
             IsInteract = false;
         }
 
