@@ -19,7 +19,9 @@ namespace ASUL.FPC.Animations
 
         private bool isSafePeriod = true;
         private int frameCounter = 0;
-        private const float MAX_SAFE_DISTANCE = 0.5f; 
+        private const float MAX_SAFE_DISTANCE = 0.5f;
+
+        public static bool IsIdleLocked = false;
 
         private IEnumerator Start()
         {
@@ -30,7 +32,7 @@ namespace ASUL.FPC.Animations
         {
             if (animator == null || controller == null) return;
 
-            animator.SetBool("IsMoving", controller.IsMoving);
+            animator.SetBool("IsMoving", controller.IsMoving && !IsIdleLocked);
             ySmoothed = Mathf.MoveTowards(ySmoothed, controller.Direction.y, damp * Time.deltaTime);
             animator.SetFloat("X", controller.Direction.x, 0.15f, Time.deltaTime);
             animator.SetFloat("Y", ySmoothed, 0.15f, Time.deltaTime);

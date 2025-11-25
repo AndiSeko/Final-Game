@@ -10,8 +10,11 @@ namespace ASUL.FPC.Animations
 
         [SerializeField] private Transform body;
 
+        [SerializeField] private Transform cameraTransform;
+
         public Animator Animator => animator;
         public Transform Body => body;
+        public Transform Camera => cameraTransform;
 
         private void Awake()
         {

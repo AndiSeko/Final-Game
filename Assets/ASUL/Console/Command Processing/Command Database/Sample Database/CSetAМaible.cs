@@ -32,6 +32,7 @@ namespace ASUL.Console
             foreach (FirstPersonController controller in controllers)
             {
                 controller.isCanMove = value;
+                controller.isHasHeadBob = value;
             }
 
             ConsoleViewer.OnConsoleLog?.Invoke($"The walking availability has been successfully changed to {value}.");
