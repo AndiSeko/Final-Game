@@ -6,7 +6,7 @@ namespace ASUL.Interactions
     [RequireComponent(typeof(Outline))]
     public class InteractableObject : MonoBehaviour, IInteractable
     {
-        public virtual bool IsInteractable { get; set; }
+        [field: SerializeField] public virtual bool IsInteractable { get; set; } = true;
 
         public virtual bool IsInteract { get; set; } = false;
 
@@ -24,6 +24,7 @@ namespace ASUL.Interactions
             {
                 outline.OutlineWidth = outlineConfig.OutlineWidth;
                 outline.OutlineColor = outlineConfig.OutlineColor;
+                outline.OutlineMode = outlineConfig.Mode;
             }
             catch
             {
@@ -40,18 +41,12 @@ namespace ASUL.Interactions
             else
                 IsInteract = true;
             EventManager.LaunchEvent(additionalEvents);
-            Animate();
             IsInteract = false;
         }
 
         public virtual void SelectionToggle(bool isSelected)
         {
             outline.enabled = isSelected;
-        }
-
-        protected virtual void Animate()
-        {
-
         }
     }
 }

@@ -9,5 +9,7 @@ namespace ASUL.Interactions
         public float OutlineWidth = 1f;
 
         public Color OutlineColor = Color.white;
+
+        public Outline.Mode Mode;
     }
 }

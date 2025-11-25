@@ -5,55 +5,55 @@ public class CSetPreset : MonoBehaviour
 {
     public static void Play()
     {
-        CSetAwaible.Interact(true);
-        CSetAwaible.Walk(true);
-        CSetAwaible.Look(true);
-        CSetAwaible.Run(false);
-        CSetAwaible.Jump(false);
+        CSetAvailable.Interact(true);
+        CSetAvailable.Walk(true);
+        CSetAvailable.Look(true);
+        CSetAvailable.Run(false);
+        CSetAvailable.Jump(false);
     }
     
     public static void Full()
     {
-        CSetAwaible.Interact(true);
-        CSetAwaible.Walk(true);
-        CSetAwaible.Look(true);
-        CSetAwaible.Run(true);
-        CSetAwaible.Jump(true);
+        CSetAvailable.Interact(true);
+        CSetAvailable.Walk(true);
+        CSetAvailable.Look(true);
+        CSetAvailable.Run(true);
+        CSetAvailable.Jump(true);
     }
 
     public static void Sprint()
     {
-        CSetAwaible.Interact(true);
-        CSetAwaible.Walk(true);
-        CSetAwaible.Look(true);
-        CSetAwaible.Run(true);
-        CSetAwaible.Jump(false);
+        CSetAvailable.Interact(true);
+        CSetAvailable.Walk(true);
+        CSetAvailable.Look(true);
+        CSetAvailable.Run(true);
+        CSetAvailable.Jump(false);
     }
 
     public static void Jump()
     {
-        CSetAwaible.Interact(true);
-        CSetAwaible.Walk(true);
-        CSetAwaible.Look(true);
-        CSetAwaible.Run(false);
-        CSetAwaible.Jump(true);
+        CSetAvailable.Interact(true);
+        CSetAvailable.Walk(true);
+        CSetAvailable.Look(true);
+        CSetAvailable.Run(false);
+        CSetAvailable.Jump(true);
     }
 
     public static void Look()
     {
-        CSetAwaible.Interact(false);
-        CSetAwaible.Walk(false);
-        CSetAwaible.Look(true);
-        CSetAwaible.Run(false);
-        CSetAwaible.Jump(false);
+        CSetAvailable.Interact(false);
+        CSetAvailable.Walk(false);
+        CSetAvailable.Look(true);
+        CSetAvailable.Run(false);
+        CSetAvailable.Jump(false);
     }
 
     public static void Cutscene()
     {
-        CSetAwaible.Interact(false);
-        CSetAwaible.Walk(false);
-        CSetAwaible.Look(false);
-        CSetAwaible.Run(false);
-        CSetAwaible.Jump(false);
+        CSetAvailable.Interact(false);
+        CSetAvailable.Walk(false);
+        CSetAvailable.Look(false);
+        CSetAvailable.Run(false);
+        CSetAvailable.Jump(false);
     }
 }

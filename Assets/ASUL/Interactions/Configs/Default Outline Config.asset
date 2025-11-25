@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Default Outline Config
   m_EditorClassIdentifier: 
   OutlineWidth: 5
-  OutlineMode: 0
   OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+  Mode: 1

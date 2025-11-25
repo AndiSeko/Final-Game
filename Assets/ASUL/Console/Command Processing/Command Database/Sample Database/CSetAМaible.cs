@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ASUL.Console
 {
-    public class CSetAwaible : MonoBehaviour
+    public class CSetAvailable : MonoBehaviour
     {
         public static void Interact(bool value)
         {
@@ -12,7 +12,7 @@ namespace ASUL.Console
 
             foreach (PlayerInteractor interactor in interactors)
             {
-                interactor.IsAwaible = value;
+                interactor.IsAvailable = value;
             }
 
             PlayerInteractorViewier[] viewiers = FindObjectsByType<PlayerInteractorViewier>(FindObjectsSortMode.None);

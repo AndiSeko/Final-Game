@@ -24,7 +24,7 @@ namespace ASUL.Console
             switch (command.primaryParameter)
             {
                 case "info": Info(); break;
-                case "setawaible": SetAwaible(command); break;
+                case "setavailable": SetAvailable(command); break;
                 case "setpreset": SetPreset(command); break;
 
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: invalid syntax!"); break;
@@ -32,6 +32,7 @@ namespace ASUL.Console
         }
 
         #region Первичный параметр
+
 
         private void Info()
         {
@@ -48,7 +49,7 @@ namespace ASUL.Console
                 $"\nUnity version: {Application.unityVersion}");
         }
 
-        private void SetAwaible(Command command)
+        private void SetAvailable(Command command)
         {
             bool commandValue;
 
@@ -61,11 +62,11 @@ namespace ASUL.Console
 
             switch (command.secondaryParameter)
             {
-                case "interact": CSetAwaible.Interact(commandValue); break;
-                case "walk": CSetAwaible.Walk(commandValue); break;
-                case "run": CSetAwaible.Run(commandValue); break;
-                case "jump": CSetAwaible.Jump(commandValue); break;
-                case "look": CSetAwaible.Look(commandValue); break;
+                case "interact": CSetAvailable.Interact(commandValue); break;
+                case "walk": CSetAvailable.Walk(commandValue); break;
+                case "run": CSetAvailable.Run(commandValue); break;
+                case "jump": CSetAvailable.Jump(commandValue); break;
+                case "look": CSetAvailable.Look(commandValue); break;
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: secondary parameter is invalid!"); return;
             }
 
