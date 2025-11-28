@@ -1,6 +1,8 @@
+using ASUL.NPC.PlayerDetection;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 
 namespace ASUL.Console
@@ -26,6 +28,7 @@ namespace ASUL.Console
                 case "info": Info(); break;
                 case "setavailable": SetAvailable(command); break;
                 case "setpreset": SetPreset(command); break;
+                case "setvisible": SetVisible(command); break;
 
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: invalid syntax!"); break;
             }
@@ -85,6 +88,20 @@ namespace ASUL.Console
 
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: secondary parameter is invalid!"); return;
             }
+        }
+
+        private void SetVisible(Command command)
+        {
+            switch (command.secondaryParameter)
+            {
+                case "true": case "1":
+                    PlayerVisibilityManager.PlayerVisibilityState = PlayerVisibilityState.Default; break;
+                case "false": case "0":
+                    PlayerVisibilityManager.PlayerVisibilityState = PlayerVisibilityState.ConsoleInvisible; break;
+
+                default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: secondary parameter is invalid!"); return;
+            }
+            ConsoleViewer.OnConsoleLog?.Invoke($"The visibility has been successfully changed to {command.secondaryParameter}.");
         }
 
         #endregion

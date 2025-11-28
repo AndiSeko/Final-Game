@@ -5603,7 +5603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601f05bbe7bdf98448c58d040c679425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultPlayerVisibilityState: 2
+  _defaultPlayerVisibilityState: 0
   viewier: {fileID: 1275009076}
 --- !u!208 &2089895498
 NavMeshObstacle:

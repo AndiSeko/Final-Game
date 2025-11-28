@@ -7,7 +7,7 @@ namespace ASUL.NPC.PlayerDetection
     {
         public static Action OnPlayerDetected;
 
-        private PlayerVisibilityState PlayerVisibilityState = PlayerVisibilityState.Default;
+        public static PlayerVisibilityState PlayerVisibilityState = PlayerVisibilityState.Default;
         
         [SerializeField] private PlayerVisibilityState _defaultPlayerVisibilityState = PlayerVisibilityState.Default;
 
@@ -88,7 +88,6 @@ namespace ASUL.NPC.PlayerDetection
             OnVisibillityAdded += AddVisibilityProgress;
         }
 
-        
     }
 
     public enum PlayerVisibilityState
@@ -96,6 +95,7 @@ namespace ASUL.NPC.PlayerDetection
         Default,
         Crouch,
         Invisible,
+        ConsoleInvisible,
         Detected
     }
 }
