@@ -1164,6 +1164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba6710158566d64c96d06d364c42564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NPCs:
+  - {fileID: 280455367}
+  - {fileID: 244675844}
+  idleDelay: 10
 --- !u!4 &333391922
 Transform:
   m_ObjectHideFlags: 0

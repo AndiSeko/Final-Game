@@ -1,3 +1,4 @@
+using ASUL.NPC.PlayerDetection;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,6 +25,8 @@ namespace ASUL.NPC
 
             if (animator != null)
                 animator.SetBool("IsWalking", !isWaiting);
+
+            PlayerVisibilityManager.OnPlayerDetected += Disable;
         }
 
         private void OnEnable()
@@ -33,6 +36,13 @@ namespace ASUL.NPC
 
             if (animator != null)
                 animator.SetBool("IsWalking", !isWaiting);
+        }
+
+        private void Disable()
+        {
+            agent.ResetPath();
+            animator.SetBool("IsWalking", false);
+            enabled = false;
         }
 
         private void Update()
