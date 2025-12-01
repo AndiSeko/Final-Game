@@ -96,6 +96,7 @@ namespace ASUL.NPC.PlayerDetection
         Crouch,
         Invisible,
         ConsoleInvisible,
-        Detected
+        Detected,
+        Losted
     }
 }

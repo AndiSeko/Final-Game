@@ -15,12 +15,13 @@ namespace ASUL.NPC.PlayerDetection
         [SerializeField] private LayerMask targetMask;
         [SerializeField] private float visibilityValue = 5f;
 
-       [Header("Частота сканирования")]
+        [Header("Частота сканирования")]
         public float scanFrequency = 10f;
 
         [Header("События")]
         public UnityEvent onTargetSpotted;
         public UnityEvent onTargetLost;
+        public UnityEvent onAllyDetected;
 
         [Header("Debug")]
         public bool drawGizmos = true;
@@ -32,6 +33,8 @@ namespace ASUL.NPC.PlayerDetection
 
         private float _scanTimer;
         private bool _lastDetected;
+
+        public Transform AllyWhoDetect { get; private set; }
 
         private void Awake()
         {
@@ -50,6 +53,8 @@ namespace ASUL.NPC.PlayerDetection
                 _scanTimer = 0f;
                 Scan();
 
+                FindAllyWhoDetect();
+
                 if (IsTargetDetected)
                 {
                     PlayerVisibilityManager.OnVisibillityAdded.Invoke(visibilityValue);
@@ -58,6 +63,19 @@ namespace ASUL.NPC.PlayerDetection
                 {
                     PlayerVisibilityManager.OnVisibillityAdded.Invoke(-visibilityValue + (visibilityValue * 50f / 100f));
                 }
+
+                if (IsTargetDetected != _lastDetected)
+                {
+                    if (IsTargetDetected) onTargetSpotted?.Invoke();
+                    else onTargetLost?.Invoke();
+                    _lastDetected = IsTargetDetected;
+                }
+
+                if (AllyWhoDetect != null)
+                {
+                    onAllyDetected?.Invoke();
+                }
+
             }
 
             if (IsTargetDetected != _lastDetected)
@@ -65,6 +83,28 @@ namespace ASUL.NPC.PlayerDetection
                 if (IsTargetDetected) onTargetSpotted?.Invoke();
                 else onTargetLost?.Invoke();
                 _lastDetected = IsTargetDetected;
+            }
+        }
+
+        private void FindAllyWhoDetect()
+        {
+            AllyWhoDetect = null;
+
+            Collider[] allies = Physics.OverlapSphere(transform.position, viewRadius);
+            float closestDist = float.MaxValue;
+
+            foreach (var col in allies)
+            {
+                AIObserver ally = col.GetComponent<AIObserver>();
+                if (ally != null && ally != this && ally.IsTargetDetected)
+                {
+                    float dist = Vector3.Distance(transform.position, ally.transform.position);
+                    if (dist < closestDist)
+                    {
+                        closestDist = dist;
+                        AllyWhoDetect = ally.transform;
+                    }
+                }
             }
         }
 

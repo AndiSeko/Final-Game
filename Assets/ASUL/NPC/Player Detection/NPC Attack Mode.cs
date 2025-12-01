@@ -1,129 +1,194 @@
+using ASUL.NPC.PlayerDetection;
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using ASUL.NPC.PlayerDetection;
 
 
 namespace ASUL.NPC
 {
+    [RequireComponent(typeof(AIObserver), typeof(NavMeshAgent))]
     public class NPCAttackMode : MonoBehaviour
     {
-        [Header("Компоненты")]
-        [SerializeField] private AIObserver observer;
-        [SerializeField] private NavMeshAgent agent;
+        private AIObserver observer;
+        private NavMeshAgent agent;
+        private float _scanTimer;
 
-        [Header("Настройки")]
-        [SerializeField] private float safeDistance = 5f;
-        [SerializeField] private float attackDistance = 1f;
-        [SerializeField] private float attackCooldown = 2f;
+        [SerializeField] private Animator animator;
 
-        [Header("События")]
-        public UnityEvent onPlayerEliminated;
+        public NPCState state = NPCState.Idle;
 
-        public enum NPCMode { Idle, Approach, Attack }
-        public NPCMode CurrentMode { get; private set; } = NPCMode.Idle;
+        private bool lastSeenTarget = false;
 
-        private Transform target;
-        private float lastAttackTime;
-        private AIPatroller patroller;
+        [SerializeField] private float eliminationDistance = 2.0f;
+        [SerializeField] private float speedBonus = 2.0f; 
 
-        private void Awake()
-        {
-            if (observer == null) observer = GetComponent<AIObserver>();
-            if (agent == null) agent = GetComponent<NavMeshAgent>();
-            patroller = GetComponent<AIPatroller>();
-            target = GameObject.FindGameObjectWithTag("Player")?.transform;
-        }
+        private float baseSpeed;
+
+        private bool isEliminating = false;
+
+        private float scanFrequency => observer.scanFrequency;
+
+        public static Action OnTargetElminated;
 
         private void Update()
         {
-            if (target == null) return;
+            if (PlayerVisibilityManager.PlayerVisibilityState != PlayerVisibilityState.Detected)
+                return;
 
-            switch (CurrentMode)
+            _scanTimer += Time.deltaTime;
+            if (_scanTimer >= (1f / scanFrequency))
             {
-                case NPCMode.Approach:
-                    ApproachTarget();
+                _scanTimer = 0f;
+
+                UpdateState();
+                HandleSpeedByVisibility();
+
+                FindTarget();
+            }
+        }
+
+        private void HandleSpeedByVisibility()
+        {
+            if (PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.Detected)
+            {
+                animator.SetTrigger("Agressive");
+                agent.speed = baseSpeed + speedBonus;
+            }
+            else if (PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.Default)
+            {
+                animator.SetTrigger("Normal");
+                agent.speed = baseSpeed;
+            }
+        }
+
+        private void UpdateState()
+        {
+            if (observer.AllyWhoDetect != null && state != NPCState.Finder)
+            {
+                state = NPCState.Helper;
+            }
+
+            if (observer.AllyWhoDetect == null && state == NPCState.Helper)
+            {
+                state = NPCState.Idle;
+                agent.ResetPath();
+            }
+
+
+            if (!observer.IsInFov && lastSeenTarget)
+            {
+                state = NPCState.Loser;
+                lastSeenTarget = false;
+            }
+
+            if ((observer.IsTargetDetected || observer.IsInFov) && state != NPCState.End)
+            {
+                state = NPCState.Finder;
+                lastSeenTarget = true;
+            }
+        }
+
+        private void FindTarget()
+        {
+            switch (state)
+            {
+                case NPCState.Idle:
+                case NPCState.Loser:
+                    agent.ResetPath();
+                    animator.SetBool("IsWalking", false);
                     break;
-                case NPCMode.Attack:
-                    AttackTarget();
+                case NPCState.Finder:
+                    agent.SetDestination(observer.Target.position);
+                    animator.SetBool("IsWalking", true);
+                    CheckEliminationDistance();
                     break;
-                case NPCMode.Idle:
-                    break;
+                case NPCState.Helper:
+                    {
+                        if (observer.AllyWhoDetect != null)
+                        {
+                            Vector3 allyPos = observer.AllyWhoDetect.position;
+
+                            Vector3 offset = -observer.AllyWhoDetect.forward * 2.0f;
+
+                            agent.SetDestination(allyPos + offset);
+                        }
+                        animator.SetBool("IsWalking", true);
+                        break;
+                    }
+                case NPCState.End:
+                    agent.ResetPath(); animator.SetBool("IsWalking", false); break;
+
             }
         }
 
-        public void SetMode(NPCMode mode)
+        private void CheckEliminationDistance()
         {
-            if (CurrentMode == mode) return;
+            if (observer.Target == null || isEliminating) return;
 
-            CurrentMode = mode;
-
-            if (mode == NPCMode.Idle)
+            float dist = Vector3.Distance(transform.position, observer.Target.position);
+            if (dist <= eliminationDistance)
             {
-                agent.ResetPath();
-                if (patroller != null)
-                {
-                    patroller.enabled = true;
-                }
-            }
-            else
-            {
-                if (patroller != null)
-                {
-                    patroller.enabled = false; 
-                }
-                agent.ResetPath();
-                agent.isStopped = false;
+                StartCoroutine(EliminateTarget());
+                isEliminating = true;
             }
         }
 
-        public bool DetectsPlayer()
+        private IEnumerator EliminateTarget()
         {
-            return observer != null && observer.IsTargetDetected;
+            state = NPCState.End;
+            agent.ResetPath();
+            animator.SetTrigger("Fire");
+            yield return new WaitForSeconds(0.1f);
+            print("Смэрть(((");
+            isEliminating = false;
+
+            agent.speed = baseSpeed;
+
+            PlayerVisibilityManager.PlayerVisibilityState = PlayerVisibilityState.Invisible;
         }
 
-        private void ApproachTarget()
-        {
-            if (agent == null || !agent.isOnNavMesh) return;
 
-            float distance = Vector3.Distance(transform.position, target.position);
-            if (distance > safeDistance)
-            {
-                agent.SetDestination(target.position);
-            }
-            else
-            {
-                agent.ResetPath();
-            }
+        private void Awake()
+        {
+            observer = GetComponent<AIObserver>();
+            agent = GetComponent<NavMeshAgent>();
+            baseSpeed = agent.speed;
         }
 
-        private void AttackTarget()
+        //private void OnDrawGizmos()
+        //{
+        //    if (!Application.isPlaying) return;
+
+        //    Color stateColor = Color.white;
+        //    switch (state)
+        //    {
+        //        case NPCState.Finder: stateColor = Color.green; break;
+        //        case NPCState.Loser: stateColor = Color.red; break;
+        //        case NPCState.Helper: stateColor = Color.blue; break;
+        //        case NPCState.Idle: stateColor = Color.gray; break;
+        //    }
+
+        //    Gizmos.color = stateColor;
+        //    Gizmos.DrawWireSphere(transform.position, 1.0f);
+
+        //    Gizmos.color = Color.yellow;
+        //    Gizmos.DrawWireSphere(transform.position, eliminationDistance);
+
+        //    UnityEditor.Handles.color = stateColor;
+        //    UnityEditor.Handles.Label(transform.position + Vector3.up * 2f, state.ToString());
+        //}
+
+        public enum NPCState
         {
-            if (agent == null || !agent.isOnNavMesh) return;
-
-            float distance = Vector3.Distance(transform.position, target.position);
-
-            if (distance > attackDistance)
-            {
-                agent.SetDestination(target.position);
-            }
-            else
-            {
-                agent.ResetPath();
-                if (Time.time - lastAttackTime >= attackCooldown)
-                {
-                    EliminatePlayer();
-                    lastAttackTime = Time.time;
-                }
-            }
-        }
-
-        private void EliminatePlayer()
-        {
-            PlayerVisibilityManager.OnVisibillityAdded?.Invoke(-100f);
-            onPlayerEliminated?.Invoke();
-            Debug.Log("Игрок ликвидирован NPC!");
-
+            Finder, 
+            Loser, 
+            Helper,
+            Idle,
+            End
         }
     }
+
+    
 }

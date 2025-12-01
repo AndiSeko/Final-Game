@@ -16,6 +16,8 @@ namespace ASUL.Interactions.Animation
         [SerializeField] private bool isCrouch = false;
         private bool crouchBoofer;
 
+        private CSetPreset.Preset presetBoofer;
+
         [SerializeField] private BodyDatabase bodyDatabase;
        
         private Transform playerBody;
@@ -46,6 +48,8 @@ namespace ASUL.Interactions.Animation
             isWorking = true;
 
             ToggleAnimationState(true);
+
+            presetBoofer = CSetPreset.CurrentPreset;
 
             CSetPreset.Cutscene();
 
@@ -125,7 +129,7 @@ namespace ASUL.Interactions.Animation
         private System.Collections.IEnumerator UnlockMovement()
         {
             yield return new WaitForSeconds(transitionTime);
-            CSetPreset.Play();
+            CSetPreset.SetByValue(presetBoofer);
             FirstPersonAnimator.IsIdleLocked = false;
             ToggleAnimationState(false);
         }

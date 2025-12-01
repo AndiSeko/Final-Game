@@ -710,7 +710,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 244675838}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.39
+  m_Radius: 0.3
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -752,6 +752,9 @@ MonoBehaviour:
   onTargetLost:
     m_PersistentCalls:
       m_Calls: []
+  onAllyDetected:
+    m_PersistentCalls:
+      m_Calls: []
   drawGizmos: 1
 --- !u!136 &244675842
 CapsuleCollider:
@@ -772,7 +775,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.39
+  m_Radius: 0.3
   m_Height: 1.9
   m_Direction: 1
   m_Center: {x: 0, y: 0.05, z: 0}
@@ -804,14 +807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112dc95835685254caa38e22efccdccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  observer: {fileID: 244675841}
-  agent: {fileID: 244675840}
-  safeDistance: 5
-  attackDistance: 1
-  attackCooldown: 2
-  onPlayerEliminated:
-    m_PersistentCalls:
-      m_Calls: []
+  animator: {fileID: 683580513}
+  state: 3
+  eliminationDistance: 3
+  speedBonus: 1
 --- !u!1 &246110431
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +899,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.39
+  m_Radius: 0.3
   m_Height: 1.9
   m_Direction: 1
   m_Center: {x: 0, y: 0.05, z: 0}
@@ -933,6 +932,9 @@ MonoBehaviour:
   onTargetLost:
     m_PersistentCalls:
       m_Calls: []
+  onAllyDetected:
+    m_PersistentCalls:
+      m_Calls: []
   drawGizmos: 1
 --- !u!195 &280455365
 NavMeshAgent:
@@ -943,7 +945,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 280455361}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.39
+  m_Radius: 0.3
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -984,14 +986,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112dc95835685254caa38e22efccdccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  observer: {fileID: 280455364}
-  agent: {fileID: 280455365}
-  safeDistance: 5
-  attackDistance: 1
-  attackCooldown: 2
-  onPlayerEliminated:
-    m_PersistentCalls:
-      m_Calls: []
+  animator: {fileID: 5866666021413660068}
+  state: 3
+  eliminationDistance: 3
+  speedBonus: 1
 --- !u!1 &290701909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,10 +1164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba6710158566d64c96d06d364c42564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateFrequency: 0.5
-  registeredNPCs:
-  - {fileID: 280455367}
-  - {fileID: 244675844}
 --- !u!4 &333391922
 Transform:
   m_ObjectHideFlags: 0
@@ -2175,7 +2169,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4294967295
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0

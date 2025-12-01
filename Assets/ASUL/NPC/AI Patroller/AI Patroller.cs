@@ -26,6 +26,15 @@ namespace ASUL.NPC
                 animator.SetBool("IsWalking", !isWaiting);
         }
 
+        private void OnEnable()
+        {
+            currentTarget = dotA;
+            agent.SetDestination(currentTarget.position);
+
+            if (animator != null)
+                animator.SetBool("IsWalking", !isWaiting);
+        }
+
         private void Update()
         {
             if (isWaiting) return;
