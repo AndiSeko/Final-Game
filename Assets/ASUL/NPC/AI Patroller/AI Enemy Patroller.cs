@@ -1,19 +1,19 @@
 using ASUL.NPC.PlayerDetection;
 using UnityEngine;
 
-namespace ASUL.NPC.AIPatroller
+namespace ASUL.NPC
 {
     public class AIEnemyPatroller : AIPatroller
     {
-        private void Start()
-        {
-            PlayerVisibilityManager.OnPlayerDetected += EndPatrolling;
-        }
+        //private void Start()
+        //{
+        //    PlayerVisibilityManager.OnPlayerDetected += EndPatrolling;
+        //}
 
-        private void OnDisable()
-        {
-            PlayerVisibilityManager.OnPlayerDetected -= EndPatrolling;
-        }
+        //private void OnDisable()
+        //{
+        //    PlayerVisibilityManager.OnPlayerDetected -= EndPatrolling;
+        //}
 
         private void EndPatrolling()
         {

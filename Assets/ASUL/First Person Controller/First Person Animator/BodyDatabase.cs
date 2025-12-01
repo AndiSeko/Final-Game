@@ -12,9 +12,12 @@ namespace ASUL.FPC.Animations
 
         [SerializeField] private Transform cameraTransform;
 
+        [SerializeField] private Stealth stealth;
+
         public Animator Animator => animator;
         public Transform Body => body;
         public Transform Camera => cameraTransform;
+        public Stealth Stealth { get { return stealth; } set { stealth = value; } }
 
         private void Awake()
         {

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ASUL.NPC.AIPatroller
+namespace ASUL.NPC
 {
     public class AIPatroller : MonoBehaviour
     {

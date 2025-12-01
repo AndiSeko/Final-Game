@@ -1,5 +1,8 @@
+using ASUL.FPC;
 using ASUL.FPC.Animations;
+using ASUL.NPC.PlayerDetection;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace ASUL.Interactions.Animation
 {
@@ -8,7 +11,10 @@ namespace ASUL.Interactions.Animation
        
         [SerializeField] private Transform targetBodyPosition;
         [SerializeField] private Transform targetCameraPosition;
-        [SerializeField] private float transitionTime = 1.0f;   
+        [SerializeField] private float transitionTime = 1.0f;
+
+        [SerializeField] private bool isCrouch = false;
+        private bool crouchBoofer;
 
         [SerializeField] private BodyDatabase bodyDatabase;
        
@@ -38,6 +44,8 @@ namespace ASUL.Interactions.Animation
             if (playerBody == null || playerCamera == null) return;
 
             isWorking = true;
+
+            ToggleAnimationState(true);
 
             CSetPreset.Cutscene();
 
@@ -119,12 +127,28 @@ namespace ASUL.Interactions.Animation
             yield return new WaitForSeconds(transitionTime);
             CSetPreset.Play();
             FirstPersonAnimator.IsIdleLocked = false;
+            ToggleAnimationState(false);
         }
 
         private System.Collections.IEnumerator WaitAndEnd()
         {
             yield return new WaitForSeconds(transitionTime);
             isWorking = false;
+        }
+
+        private void ToggleAnimationState(bool value)
+        {
+            StealthLockZone.ToggleStaticLock(value);
+
+            if (value)
+            {
+                crouchBoofer = bodyDatabase.Stealth.IsCrouch;
+                bodyDatabase.Stealth.ToggleCrouch(isCrouch);
+            }
+            else
+            {
+                bodyDatabase.Stealth.ToggleCrouch(crouchBoofer);
+            }
         }
     }
 
