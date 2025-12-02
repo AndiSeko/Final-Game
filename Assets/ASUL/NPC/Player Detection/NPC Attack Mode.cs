@@ -15,7 +15,7 @@ namespace ASUL.NPC
         private float _scanTimer;
         private Vector3 lastKnownPosition;
         private Coroutine searchCoroutine;
-        [SerializeField] private Animator animator;
+        public Animator animator;
         public NPCState state = NPCState.Idle;
         private bool lastSeenTarget = false;
         [SerializeField] private float eliminationDistance = 2.0f;
@@ -64,6 +64,9 @@ namespace ASUL.NPC
 
         private void UpdateState()
         {
+            if (state == NPCState.End)
+                return;
+
             if (observer.AllyWhoDetect != null && state != NPCState.Finder)
             {
                 state = NPCState.Helper;

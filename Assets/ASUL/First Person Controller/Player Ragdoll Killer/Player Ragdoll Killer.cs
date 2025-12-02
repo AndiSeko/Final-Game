@@ -18,6 +18,7 @@ namespace ASUL.FPC
         {
             foreach (var b in bones)
             {
+                b.GetComponent<Collider>().enabled = false;
                 b.isKinematic = true;
             }
 
@@ -33,6 +34,7 @@ namespace ASUL.FPC
             animator.enabled = false;
             foreach (var b in bones)
             {
+                b.GetComponent<Collider>().enabled = true;
                 b.isKinematic = false;
             }
 

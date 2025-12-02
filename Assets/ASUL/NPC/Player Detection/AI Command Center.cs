@@ -18,6 +18,7 @@ namespace ASUL.NPC
             UpdateCatalog();
             if (IsElminated)
                 return;
+
             Check();
         }
 
@@ -44,7 +45,11 @@ namespace ASUL.NPC
                 foreach (NPCAttackMode npc in NPCs)
                 {
                     npc.state = NPCAttackMode.NPCState.End;
-                    npc.ResetOnElimination(); 
+                    npc.ResetOnElimination();
+                    npc.animator.SetBool("IsWalking", false);
+                    npc.animator.SetTrigger("Normal");
+
+                    print("Он должен работать!!!");
                 }
                 NPCAttackMode.OnTargetElminated?.Invoke(); 
                 idleTimer = 0f;
