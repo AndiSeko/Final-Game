@@ -91,6 +91,8 @@ namespace ASUL.NPC
             switch (state)
             {
                 case NPCState.Idle:
+                    agent.ResetPath();
+                    animator.SetBool("IsWalking", false); break;
                 case NPCState.End:
                     agent.ResetPath();
                     animator.SetBool("IsWalking", false);

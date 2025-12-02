@@ -11,9 +11,13 @@ namespace ASUL.NPC
         private Dictionary<NPCAttackMode.NPCState, int> catalog;
         private float idleTimer = 0f;
 
+        private bool IsElminated = false;
+
         private void Update()
         {
             UpdateCatalog();
+            if (IsElminated)
+                return;
             Check();
         }
 
@@ -44,6 +48,7 @@ namespace ASUL.NPC
                 }
                 NPCAttackMode.OnTargetElminated?.Invoke(); 
                 idleTimer = 0f;
+                IsElminated = true;
                 return;
             }
 
