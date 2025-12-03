@@ -13,6 +13,8 @@ namespace ASUL.InputSystem
         private string previousState;
         private string currentState;
 
+        public string CurrentState { get { return currentState; } }
+
         public static InputManager Instance { get; private set; }
 
         public InputSystem_Actions actions;

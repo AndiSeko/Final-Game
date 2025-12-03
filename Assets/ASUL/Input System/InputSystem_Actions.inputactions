@@ -64,7 +64,7 @@
                     "name": "Previous",
                     "type": "Button",
                     "id": "2776c80d-3c14-4091-8c56-d04ced07a2b0",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -91,6 +91,15 @@
                     "name": "Console",
                     "type": "Button",
                     "id": "fc977d45-2f35-4dad-81e4-03eb6fadf2c2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Neurochip",
+                    "type": "Button",
+                    "id": "2a8de9d8-d118-4e75-b66e-263138998ffb",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -458,6 +467,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Console",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84c2bb3e-6dc3-4a43-a6f9-b153f1d3bb49",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Neurochip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1062,6 +1082,34 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Tutotial",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Cutscene",
+            "id": "e894e2e1-9a74-41dc-9db5-9e5954895f3a",
+            "actions": [
+                {
+                    "name": "Console",
+                    "type": "Button",
+                    "id": "cb6c33e6-d5d4-4f08-addf-439e5ab2b70a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ea0f7c40-8dd3-4008-b278-68dcb73dc25a",
+                    "path": "<Keyboard>/backquote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Console",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

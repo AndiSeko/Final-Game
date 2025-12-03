@@ -1,4 +1,5 @@
 using ASUL.Console;
+using ASUL.InputSystem;
 using UnityEngine;
 
 public class CSetPreset : MonoBehaviour
@@ -14,6 +15,8 @@ public class CSetPreset : MonoBehaviour
         CSetAvailable.Jump(false);
         
         CurrentPreset = Preset.Play;
+
+        RevertToPlay();
     }
     
     public static void Full()
@@ -25,6 +28,8 @@ public class CSetPreset : MonoBehaviour
         CSetAvailable.Jump(true);
 
         CurrentPreset = Preset.Full;
+
+        RevertToPlay();
     }
 
     public static void Sprint()
@@ -36,6 +41,8 @@ public class CSetPreset : MonoBehaviour
         CSetAvailable.Jump(false);
 
         CurrentPreset = Preset.Sprint;
+
+        RevertToPlay();
     }
 
     public static void Jump()
@@ -47,6 +54,8 @@ public class CSetPreset : MonoBehaviour
         CSetAvailable.Jump(true);
 
         CurrentPreset = Preset.Jump;
+
+        RevertToPlay();
     }
 
     public static void Look()
@@ -58,6 +67,8 @@ public class CSetPreset : MonoBehaviour
         CSetAvailable.Jump(false);
 
         CurrentPreset = Preset.Look;
+
+        RevertToPlay();
     }
 
     public static void Cutscene()
@@ -69,6 +80,19 @@ public class CSetPreset : MonoBehaviour
         CSetAvailable.Jump(false);
 
         CurrentPreset = Preset.Cutscene;
+
+        if (InputManager.Instance.CurrentState != "Cutscene")
+        {
+            InputManager.Instance.ChangeInputMap("Cutscene");
+        }
+    }
+
+    private static void RevertToPlay()
+    {
+        if (InputManager.Instance.CurrentState == "Cutscene")
+        {
+            InputManager.Instance.ChangeInputMap("Player");
+        }
     }
 
     public static void SetByValue(Preset preset)

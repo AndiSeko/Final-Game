@@ -33,6 +33,8 @@ namespace ASUL.Console
             base.Open(ctx);
             InputManager.Instance.ChangeInputMap("Console", CursorLockMode.None);
 
+            Time.timeScale = 0;
+
             viewer.IsEnable = true;
         }
 
@@ -40,6 +42,8 @@ namespace ASUL.Console
         {
             base.Close(ctx);
             InputManager.Instance.RevertToPreviousMap();
+
+            Time.timeScale = 1;
 
             viewer.IsEnable = false;
         }
