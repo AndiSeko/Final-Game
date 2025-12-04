@@ -27,7 +27,7 @@ namespace ASUL.NPC.PlayerDetection
                     return;
 
                 _visibillityProgress = 100;
-                PlayerVisibilityState = PlayerVisibilityState.Detected;
+                AICommandCenter.PlayerIsDetected = true;
                 OnPlayerDetected?.Invoke();
 
                 Debug.Log("Вас обнаружили!");
@@ -60,10 +60,9 @@ namespace ASUL.NPC.PlayerDetection
         {
             if (value < 0)
             {
-                switch (PlayerVisibilityState)
+                if (AICommandCenter.PlayerIsDetected)
                 {
-                    case PlayerVisibilityState.Detected:
-                        return 0;
+                    return 0;
                 }
 
                 return value;
@@ -96,7 +95,5 @@ namespace ASUL.NPC.PlayerDetection
         Crouch,
         Invisible,
         ConsoleInvisible,
-        Detected,
-        Losted
     }
 }

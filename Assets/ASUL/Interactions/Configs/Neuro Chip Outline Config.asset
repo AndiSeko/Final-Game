@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4187233e364d3434d8876c075693e331, type: 3}
   m_Name: Neuro Chip Outline Config
   m_EditorClassIdentifier: 
-  OutlineWidth: 5
+  OutlineWidth: 3
   OutlineColor: {r: 0.1716981, g: 1, b: 0.86414087, a: 1}
   Mode: 0

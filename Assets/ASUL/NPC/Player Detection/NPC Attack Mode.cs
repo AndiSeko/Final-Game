@@ -28,8 +28,9 @@ namespace ASUL.NPC
 
         private void Update()
         {
-            if (PlayerVisibilityManager.PlayerVisibilityState != PlayerVisibilityState.Detected)
+            if (!AICommandCenter.PlayerIsDetected)
                 return;
+
             _scanTimer += Time.deltaTime;
             if (_scanTimer >= (1f / scanFrequency))
             {
@@ -42,11 +43,11 @@ namespace ASUL.NPC
 
         public void HandleSpeedByVisibility()
         {
-            if (PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.Detected)
+            if (AICommandCenter.PlayerIsDetected)
             {
                 if (!isAggressive)
                 {
-                    animator.SetTrigger("Agressive"); 
+                    animator.SetTrigger("Agressive");
                     isAggressive = true;
                 }
                 agent.speed = baseSpeed + speedBonus;
@@ -55,10 +56,19 @@ namespace ASUL.NPC
             {
                 if (isAggressive)
                 {
-                    animator.SetTrigger("Normal"); 
+                    animator.SetTrigger("Normal");
                     isAggressive = false;
                 }
                 agent.speed = baseSpeed;
+            }
+            else if (PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.Invisible)
+            {
+                agent.ResetPath();
+                animator.SetBool("IsWalking", false);
+                animator.SetTrigger("Normal");
+                agent.speed = baseSpeed;
+                isAggressive = false;
+                state = NPCState.Idle;
             }
         }
 
@@ -95,7 +105,8 @@ namespace ASUL.NPC
             {
                 case NPCState.Idle:
                     agent.ResetPath();
-                    animator.SetBool("IsWalking", false); break;
+                    animator.SetBool("IsWalking", false);
+                    animator.SetTrigger("Normal"); break;
                 case NPCState.End:
                     agent.ResetPath();
                     animator.SetBool("IsWalking", false);

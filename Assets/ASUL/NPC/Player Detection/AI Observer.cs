@@ -36,6 +36,8 @@ namespace ASUL.NPC.PlayerDetection
 
         public Transform AllyWhoDetect { get; private set; }
 
+        private bool PlayerIsVisible => !(PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.Invisible || PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.ConsoleInvisible);
+
         private void Awake()
         {
             if (Target == null)
@@ -131,6 +133,8 @@ namespace ASUL.NPC.PlayerDetection
             Vector3 forward = transform.forward;
             float angle = Vector3.Angle(forward, toTarget);
             IsInFov = angle <= viewAngle;
+
+            IsInFov &= PlayerIsVisible;
 
             if (!IsInFov)
             {

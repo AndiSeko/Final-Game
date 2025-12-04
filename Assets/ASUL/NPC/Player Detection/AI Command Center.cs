@@ -10,7 +10,7 @@ namespace ASUL.NPC
         [SerializeField] private float idleDelay = 10f;
         private Dictionary<NPCAttackMode.NPCState, int> catalog;
         private float idleTimer = 0f;
-
+        public static bool PlayerIsDetected = false;
         private bool IsElminated = false;
 
         private void Update()
@@ -18,7 +18,6 @@ namespace ASUL.NPC
             UpdateCatalog();
             if (IsElminated)
                 return;
-
             Check();
         }
 
@@ -48,22 +47,23 @@ namespace ASUL.NPC
                     npc.ResetOnElimination();
                     npc.animator.SetBool("IsWalking", false);
                     npc.animator.SetTrigger("Normal");
-
                     print("Он должен работать!!!");
                 }
-                NPCAttackMode.OnTargetElminated?.Invoke(); 
+                PlayerIsDetected = false;
+                PlayerVisibilityManager.OnVisibillityAdded?.Invoke(-100f);
+                NPCAttackMode.OnTargetElminated?.Invoke();
                 idleTimer = 0f;
                 IsElminated = true;
                 return;
             }
 
-            if (!catalog.ContainsKey(NPCAttackMode.NPCState.Finder) && PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.Detected)
+            if (!catalog.ContainsKey(NPCAttackMode.NPCState.Finder) && PlayerIsDetected)
             {
                 idleTimer += Time.deltaTime;
                 if (idleTimer >= idleDelay)
                 {
-                    PlayerVisibilityManager.PlayerVisibilityState = PlayerVisibilityState.Default;
-                    PlayerVisibilityManager.OnVisibillityAdded?.Invoke(-100);
+                    PlayerIsDetected = false;
+                    PlayerVisibilityManager.OnVisibillityAdded?.Invoke(-100f);
                     foreach (NPCAttackMode npc in NPCs)
                     {
                         npc.state = NPCAttackMode.NPCState.Idle;
