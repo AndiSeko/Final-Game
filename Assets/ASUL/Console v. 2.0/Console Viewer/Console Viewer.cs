@@ -24,15 +24,18 @@ namespace ASUL.Console
 
         #endregion
 
+        [SerializeField] private CommandBuffer commandBuffer;
+
         public bool IsEnable { set { SetEnable(value); } }
 
         private void OnEnable()
         {
             InputManager.Instance.actions.Console.Enter.performed += OnEnterPress;
             InputManager.Instance.actions.Console.Tutotial.performed += OpenTutorial;
+            InputManager.Instance.actions.Console.Up.performed += UpArrow;
+            InputManager.Instance.actions.Console.Down.performed += DownArrow;
             OnConsoleLog += Log;
             OnConsoleLogError += LogError;
-
         }
 
         private void OnDisable()
@@ -41,6 +44,8 @@ namespace ASUL.Console
             {
                 InputManager.Instance.actions.Console.Enter.performed -= OnEnterPress;
                 InputManager.Instance.actions.Console.Tutotial.performed -= OpenTutorial;
+                InputManager.Instance.actions.Console.Up.performed -= UpArrow;
+                InputManager.Instance.actions.Console.Down.performed -= DownArrow;
             }
             OnConsoleLog -= Log;
             OnConsoleLogError -= LogError;
@@ -76,6 +81,7 @@ namespace ASUL.Console
         private void OnEnterPress(InputAction.CallbackContext ctx)
         {
             CommandProcessor.OnSendCommand?.Invoke(commandLine.text);
+            commandBuffer.Save(commandLine.text);
             commandLine.text = string.Empty;
             ScrollToTheEnd();
             SelectCommandLine();
@@ -112,6 +118,16 @@ namespace ASUL.Console
         {
             UnityEngine.Canvas.ForceUpdateCanvases();
             logsScrollRect.verticalNormalizedPosition = 0f;
+        }
+
+        private void UpArrow(InputAction.CallbackContext ctx)
+        {
+            commandLine.text = commandBuffer.UpArrow();
+        }
+
+        private void DownArrow(InputAction.CallbackContext ctx)
+        {
+            commandLine.text = commandBuffer.DownArrow();
         }
 
     }

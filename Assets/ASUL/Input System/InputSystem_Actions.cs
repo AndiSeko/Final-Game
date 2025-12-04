@@ -1135,6 +1135,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""242a62c3-c3a8-4854-bfa1-a0cec17789cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""c3392cd0-84ed-47e2-a88c-e6e694b6f08b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1168,6 +1186,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Tutotial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a92fdbfe-c28b-4ad5-abec-e25149201f24"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bdd42d80-a7ea-4a4b-aea0-82550f49c985"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1296,6 +1336,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Console_Back = m_Console.FindAction("Back", throwIfNotFound: true);
         m_Console_Enter = m_Console.FindAction("Enter", throwIfNotFound: true);
         m_Console_Tutotial = m_Console.FindAction("Tutotial", throwIfNotFound: true);
+        m_Console_Up = m_Console.FindAction("Up", throwIfNotFound: true);
+        m_Console_Down = m_Console.FindAction("Down", throwIfNotFound: true);
         // Cutscene
         m_Cutscene = asset.FindActionMap("Cutscene", throwIfNotFound: true);
         m_Cutscene_Console = m_Cutscene.FindAction("Console", throwIfNotFound: true);
@@ -1797,6 +1839,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Console_Back;
     private readonly InputAction m_Console_Enter;
     private readonly InputAction m_Console_Tutotial;
+    private readonly InputAction m_Console_Up;
+    private readonly InputAction m_Console_Down;
     /// <summary>
     /// Provides access to input actions defined in input action map "Console".
     /// </summary>
@@ -1820,6 +1864,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Console/Tutotial".
         /// </summary>
         public InputAction @Tutotial => m_Wrapper.m_Console_Tutotial;
+        /// <summary>
+        /// Provides access to the underlying input action "Console/Up".
+        /// </summary>
+        public InputAction @Up => m_Wrapper.m_Console_Up;
+        /// <summary>
+        /// Provides access to the underlying input action "Console/Down".
+        /// </summary>
+        public InputAction @Down => m_Wrapper.m_Console_Down;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1855,6 +1907,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Tutotial.started += instance.OnTutotial;
             @Tutotial.performed += instance.OnTutotial;
             @Tutotial.canceled += instance.OnTutotial;
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
         }
 
         /// <summary>
@@ -1875,6 +1933,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Tutotial.started -= instance.OnTutotial;
             @Tutotial.performed -= instance.OnTutotial;
             @Tutotial.canceled -= instance.OnTutotial;
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
         }
 
         /// <summary>
@@ -2267,6 +2331,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTutotial(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Up" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUp(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Down" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDown(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Cutscene" which allows adding and removing callbacks.

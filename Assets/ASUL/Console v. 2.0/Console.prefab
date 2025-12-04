@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 6177226894829704623}
   - component: {fileID: 7038344454581617436}
   - component: {fileID: 348909244298515203}
+  - component: {fileID: 4567453477267612005}
   m_Layer: 5
   m_Name: Console
   m_TagString: Untagged
@@ -461,6 +462,7 @@ MonoBehaviour:
   commandLine: {fileID: 1518925030973889726}
   consoleLogs: {fileID: 7850840241118871731}
   logsScrollRect: {fileID: 8650956612534763899}
+  commandBuffer: {fileID: 4567453477267612005}
 --- !u!114 &348909244298515203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +476,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commands: []
+--- !u!114 &4567453477267612005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000715934848300631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca645e763a7140544b970f2e4acefe33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2104939215139697386
 GameObject:
   m_ObjectHideFlags: 0
