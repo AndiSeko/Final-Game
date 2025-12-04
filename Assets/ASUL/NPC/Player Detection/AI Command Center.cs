@@ -35,6 +35,34 @@ namespace ASUL.NPC
                     catalog[npc.state]++;
                 }
             }
+
+            ClearLosers();
+        }
+
+        private void ClearLosers()
+        {
+            List<NPCAttackMode> losers = new List<NPCAttackMode>();
+
+            foreach (NPCAttackMode npc in NPCs)
+            {
+                if (npc.state == NPCAttackMode.NPCState.Loser)
+                    losers.Add(npc);
+
+                if (!catalog.ContainsKey(npc.state))
+                    catalog[npc.state] = 1;
+                else
+                    catalog[npc.state]++;
+            }
+
+            if (losers.Count > 1)
+            {
+                NPCAttackMode realLoser = losers[0];
+
+                for (int i = 1; i < losers.Count; i++)
+                {
+                    losers[i].state = NPCAttackMode.NPCState.Idle;
+                }
+            }
         }
 
         private void Check()

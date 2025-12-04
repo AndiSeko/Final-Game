@@ -29,7 +29,15 @@ namespace ASUL.NPC
         private void Update()
         {
             if (!AICommandCenter.PlayerIsDetected)
+            {
+                if (isAggressive)
+                {
+                    animator.SetTrigger("Normal");
+                    isAggressive = false;
+                    agent.speed = baseSpeed;
+                }
                 return;
+            }
 
             _scanTimer += Time.deltaTime;
             if (_scanTimer >= (1f / scanFrequency))
@@ -52,25 +60,9 @@ namespace ASUL.NPC
                 }
                 agent.speed = baseSpeed + speedBonus;
             }
-            else if (PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.Default)
-            {
-                if (isAggressive)
-                {
-                    animator.SetTrigger("Normal");
-                    isAggressive = false;
-                }
-                agent.speed = baseSpeed;
-            }
-            else if (PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.Invisible)
-            {
-                agent.ResetPath();
-                animator.SetBool("IsWalking", false);
-                animator.SetTrigger("Normal");
-                agent.speed = baseSpeed;
-                isAggressive = false;
-                state = NPCState.Idle;
-            }
         }
+
+
 
         private void UpdateState()
         {
@@ -106,11 +98,10 @@ namespace ASUL.NPC
                 case NPCState.Idle:
                     agent.ResetPath();
                     animator.SetBool("IsWalking", false);
-                    animator.SetTrigger("Normal"); break;
+                    break;
                 case NPCState.End:
                     agent.ResetPath();
                     animator.SetBool("IsWalking", false);
-                    animator.SetTrigger("Normal");
                     break;
                 case NPCState.Finder:
                     agent.SetDestination(observer.Target.position);
