@@ -78,13 +78,13 @@ namespace ASUL.NPC
                 state = NPCState.Idle;
                 agent.ResetPath();
             }
-            if (!observer.IsInFov && lastSeenTarget && state != NPCState.Loser)
+            if (!observer.IsInFovIsVisible && lastSeenTarget && state != NPCState.Loser)
             {
                 lastKnownPosition = observer.Target.position;
                 state = NPCState.Loser;
                 lastSeenTarget = false;
             }
-            if ((observer.IsTargetDetected || observer.IsInFov) && state != NPCState.End)
+            if ((observer.IsTargetDetectedIsVisible || observer.IsInFovIsVisible) && state != NPCState.End)
             {
                 state = NPCState.Finder;
                 lastSeenTarget = true;
@@ -177,7 +177,7 @@ namespace ASUL.NPC
             print("Ñìýðòü(((");
             isEliminating = false;
             agent.speed = baseSpeed;
-            PlayerVisibilityManager.PlayerVisibilityState = PlayerVisibilityState.Invisible;
+            PlayerVisibilityManager.PlayerVisibilityState = PlayerVisibilityState.Dead;
             isAggressive = false; 
         }
 

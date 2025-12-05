@@ -1,3 +1,4 @@
+using ASUL.Dieplome.NeuroChip;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +15,7 @@ namespace ASUL.NPC.PlayerDetection
         [SerializeField] private LayerMask obstacleMask;
         [SerializeField] private LayerMask targetMask;
         [SerializeField] private float visibilityValue = 5f;
+        [SerializeField] private float unchargeValue = 0.5f;
 
         [Header("Частота сканирования")]
         public float scanFrequency = 10f;
@@ -29,6 +31,11 @@ namespace ASUL.NPC.PlayerDetection
         public bool HasLineOfSight { get; private set; }
         public bool IsInFov { get; private set; }
         public bool IsInRange { get; private set; }
+
+        public bool IsInFovIsVisible => IsInFov && PlayerIsVisible;
+
+        public bool IsTargetDetectedIsVisible => IsTargetDetected && PlayerIsVisible;
+
         public bool IsTargetDetected => HasLineOfSight && IsInFov && IsInRange;
 
         private float _scanTimer;
@@ -36,7 +43,7 @@ namespace ASUL.NPC.PlayerDetection
 
         public Transform AllyWhoDetect { get; private set; }
 
-        private bool PlayerIsVisible => !(PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.Invisible || PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.ConsoleInvisible);
+        private bool PlayerIsVisible => !(PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.NeurochipInvisible || PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.ConsoleInvisible);
 
         private void Awake()
         {
@@ -59,7 +66,15 @@ namespace ASUL.NPC.PlayerDetection
 
                 if (IsTargetDetected)
                 {
-                    PlayerVisibilityManager.OnVisibillityAdded.Invoke(visibilityValue);
+
+                    if (PlayerIsVisible)
+                    {
+                        PlayerVisibilityManager.OnVisibillityAdded.Invoke(visibilityValue);
+                    }
+                    else if (PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.NeurochipInvisible)
+                    {
+                        NeuroChip.OnChargeChanged?.Invoke(-unchargeValue);
+                    }
                 }
                 else
                 {
@@ -134,7 +149,6 @@ namespace ASUL.NPC.PlayerDetection
             float angle = Vector3.Angle(forward, toTarget);
             IsInFov = angle <= viewAngle;
 
-            IsInFov &= PlayerIsVisible;
 
             if (!IsInFov)
             {

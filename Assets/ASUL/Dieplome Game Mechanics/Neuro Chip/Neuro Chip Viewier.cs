@@ -1,9 +1,10 @@
+using MPUIKIT;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace ASUL.Dieplome.NeuroChip
 {
-    public class NeuroChipViewier : MonoBehaviour
+    public class NeuroChipViewer : MonoBehaviour
     {
         private float visibility = 0f;
 
@@ -11,7 +12,11 @@ namespace ASUL.Dieplome.NeuroChip
 
         [SerializeField] private Volume volume;
 
+        [SerializeField] private MPImage charge;
+
         private float targetWeight = 0;
+
+        private float targetCharge = 0;
 
         public bool IsView { get; set; } = false;
 
@@ -22,6 +27,13 @@ namespace ASUL.Dieplome.NeuroChip
             visibility = Mathf.MoveTowards(visibility, targetWeight, Time.deltaTime * smoothSpeed);
 
             volume.weight = visibility;
+
+            charge.fillAmount = Mathf.Lerp(charge.fillAmount, targetCharge, Time.deltaTime * smoothSpeed);
+        }
+
+        public void SetChargeView(float value)
+        {
+            targetCharge = Mathf.Clamp01(value);
         }
     }
 }

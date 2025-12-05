@@ -1,19 +1,28 @@
 using ASUL.InputSystem;
+using ASUL.NPC.PlayerDetection;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace ASUL.Dieplome.NeuroChip
 {
     public class NeuroChip : MonoBehaviour
     {
-        [SerializeField] private NeuroChipViewier viewier;
+        [SerializeField] private NeuroChipViewer viewier;
+
+        private float charge = 1f;
+
+        private PlayerVisibilityState lastState;
+
+        public static Action<float> OnChargeChanged;
 
         private void OnEnable()
         {
             InputManager.Instance.actions.Player.Neurochip.performed += View;
             InputManager.Instance.actions.Player.Neurochip.canceled += Unview;
+            OnChargeChanged += ChangeCharge;
+
+            viewier.SetChargeView(1);
         }
 
         private void OnDisable()
@@ -23,6 +32,26 @@ namespace ASUL.Dieplome.NeuroChip
                 InputManager.Instance.actions.Player.Neurochip.performed -= View;
                 InputManager.Instance.actions.Player.Neurochip.canceled -= Unview;
             }
+            OnChargeChanged -= ChangeCharge;
+        }
+
+        private void ChangeCharge(float value)
+        {
+            float v = value / 100f;
+
+            if (charge + v <= 0)
+            {
+                charge = 0;
+
+                PlayerVisibilityManager.PlayerVisibilityState = lastState;
+            }
+            else
+            {
+                charge += v;
+            }
+
+            viewier.SetChargeView(charge);
+
         }
 
         private void View(InputAction.CallbackContext ctx)
@@ -30,6 +59,12 @@ namespace ASUL.Dieplome.NeuroChip
             viewier.IsView = true;
 
             ToggleVisible(true);
+
+            if (charge > 0)
+            {
+                lastState = PlayerVisibilityManager.PlayerVisibilityState;
+                PlayerVisibilityManager.PlayerVisibilityState = PlayerVisibilityState.NeurochipInvisible;
+            }
         }
 
         private void Unview(InputAction.CallbackContext ctx)
@@ -37,6 +72,8 @@ namespace ASUL.Dieplome.NeuroChip
             viewier.IsView = false;
 
             ToggleVisible(false);
+
+            PlayerVisibilityManager.PlayerVisibilityState = lastState;
         }
 
 

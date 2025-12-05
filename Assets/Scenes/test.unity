@@ -898,6 +898,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   visibilityValue: 20
+  unchargeValue: 1
   scanFrequency: 10
   onTargetSpotted:
     m_PersistentCalls:
@@ -1263,6 +1264,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   visibilityValue: 15
+  unchargeValue: 1
   scanFrequency: 10
   onTargetSpotted:
     m_PersistentCalls:
@@ -4323,6 +4325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 5
   volume: {fileID: 1097415742}
+  charge: {fileID: 104245118}
 --- !u!224 &1605595197 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8513820440204347883, guid: 30d83197aecced041a30d15716efba57, type: 3}

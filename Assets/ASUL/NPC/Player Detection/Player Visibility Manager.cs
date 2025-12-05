@@ -93,7 +93,8 @@ namespace ASUL.NPC.PlayerDetection
     {
         Default,
         Crouch,
-        Invisible,
+        NeurochipInvisible,
         ConsoleInvisible,
+        Dead
     }
 }
