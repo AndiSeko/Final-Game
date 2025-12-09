@@ -8,7 +8,7 @@ namespace ASUL.Electronics
 
         [field: SerializeField] public float Time = 1f;
 
-        public override void Press()
+        public override void Switch()
         {
             IsWorking = true;
 

@@ -15,7 +15,7 @@ namespace ASUL.Electronics
              CalculateWirework();
         }
 
-        public virtual void Press()
+        public virtual void Switch()
         {
             IsWorking = !IsWorking;
         }
