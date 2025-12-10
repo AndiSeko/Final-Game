@@ -29,13 +29,13 @@ MonoBehaviour:
   active: 1
   blurRadius:
     m_OverrideState: 0
-    m_Value: 5
+    m_Value: 11
   color1:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.554717, g: 0.554717, b: 0.554717, a: 1}
   color2:
     m_OverrideState: 1
-    m_Value: {r: 0.3, g: 0.75, b: 1, a: 1}
+    m_Value: {r: 0.10827341, g: 0.5169811, b: 0.44975942, a: 1}
   color3:
     m_OverrideState: 1
     m_Value: {r: 0.3, g: 0.75, b: 1, a: 1}
@@ -44,7 +44,7 @@ MonoBehaviour:
     m_Value: {r: 0.3, g: 0.75, b: 1, a: 1}
   fallOff1:
     m_OverrideState: 0
-    m_Value: 0.015
+    m_Value: 0.228
   fallOff2:
     m_OverrideState: 0
     m_Value: 0.015
@@ -58,8 +58,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   fillAlpha2:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.268
   fillAlpha3:
     m_OverrideState: 0
     m_Value: 0

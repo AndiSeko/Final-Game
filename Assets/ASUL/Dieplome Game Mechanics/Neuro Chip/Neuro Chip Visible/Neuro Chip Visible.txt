@@ -1,0 +1,31 @@
+using ASUL.Interactions;
+using UnityEngine;
+
+namespace ASUL.Dieplome.NeuroChip
+{
+    [RequireComponent(typeof(Outline))]   
+    public class NeuroChipVisible : MonoBehaviour
+    {
+        // Класс устарел(((
+
+        [SerializeField] private InteractableOutlineConfig outlineConfig;
+
+        private Outline outline;
+
+        private void Awake()
+        {
+            outline = GetComponent<Outline>();
+
+            outline.OutlineWidth = outlineConfig.OutlineWidth;
+            outline.OutlineMode = outlineConfig.Mode;
+            outline.OutlineColor = outlineConfig.OutlineColor;
+
+            outline.enabled = false;
+        }
+
+        public void ToggleVisible(bool value)
+        {
+            outline.enabled = value;
+        }
+    }
+}

@@ -3,27 +3,39 @@ using UnityEngine;
 
 namespace ASUL.Dieplome.NeuroChip
 {
-    [RequireComponent(typeof(Outline))]   
     public class NeuroChipVisible : MonoBehaviour
     {
-        [SerializeField] private InteractableOutlineConfig outlineConfig;
+        [SerializeField] private RenderingLayerMask OutlineType;
 
-        private Outline outline;
+        private MeshRenderer[] renderers;
 
         private void Awake()
         {
-            outline = GetComponent<Outline>();
-
-            outline.OutlineWidth = outlineConfig.OutlineWidth;
-            outline.OutlineMode = outlineConfig.Mode;
-            outline.OutlineColor = outlineConfig.OutlineColor;
-
-            outline.enabled = false;
+            UpdateRenderers();
         }
 
         public void ToggleVisible(bool value)
         {
-            outline.enabled = value;
+            UpdateRenderers();
+
+            foreach (var renderer in renderers)
+            {
+                if (value)
+                {
+                    renderer.renderingLayerMask |= (uint)OutlineType;
+                }
+                else
+                {
+                    renderer.renderingLayerMask &= ~(uint)OutlineType;
+                }
+            }
         }
+
+        private void UpdateRenderers()
+        {
+            renderers = GetComponentsInChildren<MeshRenderer>();
+        }
+
+        
     }
 }
