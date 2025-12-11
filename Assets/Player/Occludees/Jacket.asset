@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea655116569b3fe48979b9907f3ff443, type: 3}
+  m_Name: Jacket
+  m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: -6529113059438736124, guid: 49840db9843f8994f9d950843130eace, type: 3}
+  <Occluders>k__BackingField: []
+  <LodOcclusionData>k__BackingField:
+  - <MeshOcclusionData>k__BackingField:
+    - originalSharedMesh: {fileID: -5819183975530660181, guid: 6099fdbe49f56da428eea36bb7a0b455, type: 3}
+      occludedTrianglesByLODId:
+        keys: []
+        values: []
+    <Id>k__BackingField: 90a99338-f085-4039-93fa-80c0e5d49ab4
+  <SkinnedMeshData>k__BackingField:
+    <IsInitialized>k__BackingField: 0
+    <RootBoneName>k__BackingField: 
+    <BoneNames>k__BackingField: []
+    originalRootBone: {fileID: 0}
+    originalBones: []
