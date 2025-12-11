@@ -1,4 +1,6 @@
 using ASUL.Interactions;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ASUL.Dieplome.NeuroChip
@@ -7,7 +9,7 @@ namespace ASUL.Dieplome.NeuroChip
     {
         [SerializeField] private RenderingLayerMask OutlineType;
 
-        private MeshRenderer[] renderers;
+        private List<Renderer> renderers = new List<Renderer>();
 
         private void Awake()
         {
@@ -33,9 +35,10 @@ namespace ASUL.Dieplome.NeuroChip
 
         private void UpdateRenderers()
         {
-            renderers = GetComponentsInChildren<MeshRenderer>();
+            renderers.Clear();
+            renderers.AddRange(GetComponentsInChildren<MeshRenderer>());
+            renderers.AddRange(GetComponentsInChildren<SkinnedMeshRenderer>());
         }
-
         
     }
 }

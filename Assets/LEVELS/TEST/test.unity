@@ -694,7 +694,6 @@ GameObject:
   - component: {fileID: 244675841}
   - component: {fileID: 244675840}
   - component: {fileID: 244675844}
-  - component: {fileID: 244675846}
   - component: {fileID: 244675845}
   m_Layer: 8
   m_Name: Infantryman (1)
@@ -826,25 +825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd983ff4768a994bb7ef2534079a0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineConfig: {fileID: 11400000, guid: 458ebfdeca38e2e4987c162374e7b291, type: 2}
---- !u!114 &244675846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244675838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  OutlineType:
+    serializedVersion: 0
+    m_Bits: 256
 --- !u!1 &246110431
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +874,6 @@ GameObject:
   - component: {fileID: 280455365}
   - component: {fileID: 280455366}
   - component: {fileID: 280455367}
-  - component: {fileID: 280455369}
   - component: {fileID: 280455368}
   m_Layer: 8
   m_Name: Infantryman
@@ -1039,25 +1021,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd983ff4768a994bb7ef2534079a0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineConfig: {fileID: 11400000, guid: 458ebfdeca38e2e4987c162374e7b291, type: 2}
---- !u!114 &280455369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280455361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  OutlineType:
+    serializedVersion: 0
+    m_Bits: 256
 --- !u!1 &290701909
 GameObject:
   m_ObjectHideFlags: 0
