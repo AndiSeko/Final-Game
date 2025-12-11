@@ -2,7 +2,6 @@ using ASUL.NPC.PlayerDetection;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 
 namespace ASUL.Console
@@ -32,6 +31,24 @@ namespace ASUL.Console
 
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: invalid syntax!"); break;
             }
+        }
+
+        public static bool IsCommandList(string commands)
+        {
+            Command[] c = CommandReader.ReadCommands(commands);
+
+            foreach (Command command in c)
+            {
+                switch (command.primaryParameter)
+                {
+                    case "info":
+                    case "setavailable":
+                    case "setpreset":
+                    case "setvisible": break;
+                    default: return false;
+                }
+            }
+            return true;
         }
 
         #region Первичный параметр
@@ -105,8 +122,5 @@ namespace ASUL.Console
         }
 
         #endregion
-
-
-
     }
 }

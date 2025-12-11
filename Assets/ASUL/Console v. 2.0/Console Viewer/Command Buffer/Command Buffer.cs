@@ -1,8 +1,9 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
+using UnityEditor;
 using UnityEngine;
 
 namespace ASUL.Console
@@ -78,6 +79,8 @@ namespace ASUL.Console
                 commandHistory = new List<CommandData>();
                 currentIndex = 0;
             }
+
+            ClearAllSpam();
         }
 
         public string UpArrow()
@@ -103,6 +106,24 @@ namespace ASUL.Console
                 .ToList();
 
             currentIndex = commandHistory.Count;
+        }
+
+        private void ClearAllSpam()
+        {
+            var toRemove = new List<CommandData>();
+
+            foreach (var command in commandHistory)
+            {
+                if (!CommandDatabaseSample.IsCommandList(command.command))
+                {
+                    toRemove.Add(command);
+                }
+            }
+
+            foreach (var item in toRemove)
+            {
+                commandHistory.Remove(item);
+            }
         }
     }
 
