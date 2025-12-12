@@ -18,6 +18,8 @@ namespace ASUL.DNS.Save
         [field: SerializeField] public Sprite CharacterIcon { get; set; }
         [field: SerializeField] public CharacterData Character { get; set; }
         [field: SerializeField] public List<DialogueChoiceSaveData> Choices { get; set; }
+        [field: SerializeField] public AudioClip Voiceover { get; set; }
+        [field: SerializeField] public float DelayTime { get; set; }
         [field: SerializeField] public string GroupID { get; set; }
         [field: SerializeField] public DialogueNodeTypes DialogueNodeType { get; set; }
         [field: SerializeField] public Vector2 Position { get; set; }

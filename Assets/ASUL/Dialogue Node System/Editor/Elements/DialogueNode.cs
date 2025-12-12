@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -31,6 +32,9 @@ namespace ASUL.DNS
         public virtual Sprite Icon { get; set; }
         public virtual CharacterData Character { get; set; }
 
+        public AudioClip Voiceover { get; set; }
+        public float DelayTime { get; set; }
+
 
         protected DialogueGraphView graphView;
         private Color defaultBackgroundColor;
@@ -42,6 +46,7 @@ namespace ASUL.DNS
             Choices = new List<DialogueChoiceSaveData>();
             Text = "Type some text here...";
             Events = "";
+            DelayTime = 0f;
 
             graphView = DSgraphView;
             defaultBackgroundColor = new Color(29f / 255f, 29f / 255f, 30f / 255f);
@@ -130,6 +135,34 @@ namespace ASUL.DNS
 
             extensionContainer.Add(customDataContainer);
 
+            Foldout voiceoverFoldout = DialogueElementUtility.CreateFoldout("Voiceover");
+            ObjectField voiceoverObjectField = new ObjectField
+            {
+                objectType = typeof(AudioClip),
+                allowSceneObjects = false,
+                value = Voiceover
+            };
+            voiceoverObjectField.RegisterValueChangedCallback(evt =>
+            {
+                Voiceover = evt.newValue as AudioClip;
+            });
+            voiceoverFoldout.Add(voiceoverObjectField);
+
+            extensionContainer.Add(voiceoverFoldout);
+
+            Foldout delayFoldout = DialogueElementUtility.CreateFoldout("Delay");
+
+            FloatField delayField = new FloatField("Delay")
+            {
+                value = DelayTime
+            };
+            delayField.RegisterValueChangedCallback(evt =>
+            {
+                DelayTime = evt.newValue;
+            });
+
+            delayFoldout.Add(delayField);
+            extensionContainer.Add(delayFoldout);
         }
 
         public void DisconnectAllPorts()

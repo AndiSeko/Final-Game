@@ -13,11 +13,13 @@ namespace ASUL.DNS
         [field: SerializeField] public Color CharacterNameColor { get; set; }
         [field: SerializeField] public Sprite CharacterIcon { get; set; }
         [field: SerializeField] public CharacterData Character { get; set; }
+        [field: SerializeField] public AudioClip Voiceover { get; set; }
+        [field: SerializeField] public float DelayTime { get; set; }
         [field: SerializeField] public List<DialogueChoiceData> Choices { get; set; }
         [field: SerializeField] public DialogueNodeTypes DialogueNodeType { get; set; }
         [field: SerializeField] public bool IsStartingDialogue { get; set; }
 
-        public void Initialyze(string dialogueName, string text, string events, string characterName, Color characterNameColor, Sprite characterIcon, List<DialogueChoiceData> choices, DialogueNodeTypes dialogueNodeType, bool isStartingDialogue)
+        public void Initialyze(string dialogueName, string text, string events, string characterName, Color characterNameColor, Sprite characterIcon, AudioClip voiceover, float delay, List<DialogueChoiceData> choices, DialogueNodeTypes dialogueNodeType, bool isStartingDialogue)
         {
             DialogueName = dialogueName;
             Text = text;
@@ -28,6 +30,8 @@ namespace ASUL.DNS
             Choices = choices;
             DialogueNodeType = dialogueNodeType;
             IsStartingDialogue = isStartingDialogue;
+            Voiceover = voiceover;
+            DelayTime = delay;
         }
     }
 }

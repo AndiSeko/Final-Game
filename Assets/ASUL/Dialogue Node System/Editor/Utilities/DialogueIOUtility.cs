@@ -188,6 +188,8 @@ public static class DialogueIOUtility
         nodeData.CharacterName = node.CharacterName;
         nodeData.CharacterNameColor = node.NameColor;
         nodeData.CharacterIcon = node.Icon;
+        nodeData.DelayTime = node.DelayTime;
+        nodeData.Voiceover = node.Voiceover;
 
         dialogueData.Nodes.Add(nodeData);
     }
@@ -239,6 +241,8 @@ public static class DialogueIOUtility
             node.CharacterName,
             node.NameColor,
             node.Icon,
+            node.Voiceover,
+            node.DelayTime,
             ConvertNodeChoicesToDialogueChoices(node.Choices),
             node.DialogueNodeType,
             node.IsStartingNode()
@@ -432,6 +436,8 @@ public static class DialogueIOUtility
             node.CharacterName = nodeData.CharacterName;
             node.NameColor = nodeData.CharacterNameColor;
             node.Icon = nodeData.CharacterIcon;
+            node.DelayTime = nodeData.DelayTime;
+            node.Voiceover = nodeData.Voiceover;
 
             if (nodeData.DialogueNodeType == DialogueNodeTypes.PersonMultipleChoice || nodeData.DialogueNodeType == DialogueNodeTypes.PersonSingleChoice)
             {
