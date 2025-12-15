@@ -28,6 +28,7 @@ namespace ASUL.Console
                 case "setavailable": SetAvailable(command); break;
                 case "setpreset": SetPreset(command); break;
                 case "setvisible": SetVisible(command); break;
+                case "clear": Clear(); break;
 
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: invalid syntax!"); break;
             }
@@ -119,6 +120,16 @@ namespace ASUL.Console
                 default: ConsoleViewer.OnConsoleLogError?.Invoke("Command error: secondary parameter is invalid!"); return;
             }
             ConsoleViewer.OnConsoleLog?.Invoke($"The visibility has been successfully changed to {command.secondaryParameter}.");
+        }
+
+        private void Clear()
+        {
+            ConsoleViewer[] viewers = FindObjectsByType<ConsoleViewer>(FindObjectsSortMode.None);
+
+            foreach (ConsoleViewer viewer in viewers)
+            {
+                viewer.ClearConsole();
+            }
         }
 
         #endregion
