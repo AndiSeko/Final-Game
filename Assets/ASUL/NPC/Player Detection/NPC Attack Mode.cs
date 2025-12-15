@@ -84,7 +84,7 @@ namespace ASUL.NPC
                 state = NPCState.Loser;
                 lastSeenTarget = false;
             }
-            if ((observer.IsTargetDetectedIsVisible || observer.IsInFovIsVisible) && state != NPCState.End)
+            if ((observer.IsTargetDetectedIsVisible) && state != NPCState.End)
             {
                 state = NPCState.Finder;
                 lastSeenTarget = true;
@@ -135,25 +135,31 @@ namespace ASUL.NPC
                         break;
                     }
                 case NPCState.Loser:
-                    if (observer.IsInFov)
                     {
-                        agent.SetDestination(observer.Target.position);
-                        animator.SetBool("IsWalking", true);
-                    }
-                    else
-                    {
-                        agent.SetDestination(lastKnownPosition);
-                        if (agent.remainingDistance > agent.stoppingDistance || agent.pathPending)
+                        Vector3 targetPos = observer.IsInFov
+                            ? observer.Target.position
+                            : lastKnownPosition;
+
+                        if (!CanReach(targetPos))
                         {
-                            animator.SetBool("IsWalking", true);
+                            agent.ResetPath();
+                            animator.SetBool("IsWalking", false);
+                            state = NPCState.Idle;
+                            break;
                         }
-                        if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && searchCoroutine == null)
+
+                        agent.SetDestination(targetPos);
+                        animator.SetBool("IsWalking", true);
+
+                        if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
                         {
                             animator.SetBool("IsWalking", false);
-                            searchCoroutine = StartCoroutine(SearchBehavior());
+
+                            if (searchCoroutine == null)
+                                searchCoroutine = StartCoroutine(SearchBehavior());
                         }
+                        break;
                     }
-                    break;
             }
         }
 
@@ -180,6 +186,15 @@ namespace ASUL.NPC
             PlayerVisibilityManager.PlayerVisibilityState = PlayerVisibilityState.Dead;
             isAggressive = false; 
         }
+
+        private bool CanReach(Vector3 target)
+        {
+            NavMeshPath path = new NavMeshPath();
+            agent.CalculatePath(target, path);
+
+            return path.status == NavMeshPathStatus.PathComplete;
+        }
+
 
         private void Awake()
         {
