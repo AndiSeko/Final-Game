@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8392044494417723300}
   - component: {fileID: 1144084322734664324}
   - component: {fileID: 128304431645490416}
-  m_Layer: 0
+  - component: {fileID: 5106437946008701557}
+  m_Layer: 9
   m_Name: Door 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +110,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.012499999, y: 0.00074999995, z: 0.024999995}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &5106437946008701557
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502963582090783871}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.006, y: 0.00001, z: 0.012}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1665672675144760374
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +138,8 @@ GameObject:
   - component: {fileID: 8846383807750412817}
   - component: {fileID: 3133391950635463324}
   - component: {fileID: 8102900877929983719}
-  m_Layer: 0
+  - component: {fileID: 3302867647817158567}
+  m_Layer: 9
   m_Name: Door 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +236,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.012499999, y: 0.00074999995, z: 0.024999995}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &3302867647817158567
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665672675144760374}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.006, y: 0.00001, z: 0.012}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7522434667265506043
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +263,7 @@ GameObject:
   - component: {fileID: 9121910746714065373}
   - component: {fileID: 4819706145757517297}
   - component: {fileID: 7042069072488280649}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Active Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
