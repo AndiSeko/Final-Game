@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Andi Seko
-  productName: Dieplome
+  productName: Alpha
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.06415099, g: 0.06415099, b: 0.06415099, a: 1}

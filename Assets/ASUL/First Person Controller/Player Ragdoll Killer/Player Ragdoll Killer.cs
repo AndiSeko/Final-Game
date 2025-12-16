@@ -25,6 +25,11 @@ namespace ASUL.FPC
             NPCAttackMode.OnTargetElminated += Death;
         }
 
+        private void OnDestroy()
+        {
+            NPCAttackMode.OnTargetElminated -= Death;
+        }
+
         private void Death()
         {
             CSetPreset.Cutscene();

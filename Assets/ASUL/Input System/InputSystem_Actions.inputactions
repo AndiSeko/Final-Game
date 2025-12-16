@@ -1154,6 +1154,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "MainMenu",
+            "id": "3b686624-e168-4249-aae4-3fc43d572d4c",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [

@@ -38,6 +38,11 @@ namespace ASUL.NPC
                 animator.SetBool("IsWalking", !isWaiting);
         }
 
+        private void OnDisable()
+        {
+            PlayerVisibilityManager.OnPlayerDetected -= Disable;
+        }
+
         private void Disable()
         {
             agent.ResetPath();

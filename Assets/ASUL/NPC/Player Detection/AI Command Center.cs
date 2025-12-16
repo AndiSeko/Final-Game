@@ -10,8 +10,20 @@ namespace ASUL.NPC
         [SerializeField] private float idleDelay = 10f;
         private Dictionary<NPCAttackMode.NPCState, int> catalog;
         private float idleTimer = 0f;
-        public static bool PlayerIsDetected = false;
+        public static bool PlayerIsDetected { get; set; }
+        public static void SetPlayerDetected(bool value)
+        {
+            PlayerIsDetected = value;
+        }
+
         private bool IsElminated = false;
+
+        private void Awake()
+        {
+            PlayerIsDetected = false;
+            IsElminated = false;
+            idleTimer = 0f;
+        }
 
         private void Update()
         {
@@ -20,6 +32,7 @@ namespace ASUL.NPC
                 return;
             Check();
         }
+
 
         private void UpdateCatalog()
         {
@@ -75,7 +88,6 @@ namespace ASUL.NPC
                     npc.ResetOnElimination();
                     npc.animator.SetBool("IsWalking", false);
                     npc.animator.SetTrigger("Normal");
-                    print("Он должен работать!!!");
                 }
                 PlayerIsDetected = false;
                 PlayerVisibilityManager.OnVisibillityAdded?.Invoke(-100f);

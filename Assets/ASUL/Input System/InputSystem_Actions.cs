@@ -1240,6 +1240,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MainMenu"",
+            ""id"": ""3b686624-e168-4249-aae4-3fc43d572d4c"",
+            ""actions"": [],
+            ""bindings"": []
         }
     ],
     ""controlSchemes"": [
@@ -1341,6 +1347,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // Cutscene
         m_Cutscene = asset.FindActionMap("Cutscene", throwIfNotFound: true);
         m_Cutscene_Console = m_Cutscene.FindAction("Console", throwIfNotFound: true);
+        // MainMenu
+        m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1349,6 +1357,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Console.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Console.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Cutscene.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Cutscene.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_MainMenu.enabled, "This will cause a leak and performance issues, InputSystem_Actions.MainMenu.Disable() has not been called.");
     }
 
     /// <summary>
@@ -2068,6 +2077,91 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="CutsceneActions" /> instance referencing this action map.
     /// </summary>
     public CutsceneActions @Cutscene => new CutsceneActions(this);
+
+    // MainMenu
+    private readonly InputActionMap m_MainMenu;
+    private List<IMainMenuActions> m_MainMenuActionsCallbackInterfaces = new List<IMainMenuActions>();
+    /// <summary>
+    /// Provides access to input actions defined in input action map "MainMenu".
+    /// </summary>
+    public struct MainMenuActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public MainMenuActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="MainMenuActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(MainMenuActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="MainMenuActions" />
+        public void AddCallbacks(IMainMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MainMenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MainMenuActionsCallbackInterfaces.Add(instance);
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="MainMenuActions" />
+        private void UnregisterCallbacks(IMainMenuActions instance)
+        {
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MainMenuActions.UnregisterCallbacks(IMainMenuActions)" />.
+        /// </summary>
+        /// <seealso cref="MainMenuActions.UnregisterCallbacks(IMainMenuActions)" />
+        public void RemoveCallbacks(IMainMenuActions instance)
+        {
+            if (m_Wrapper.m_MainMenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="MainMenuActions.AddCallbacks(IMainMenuActions)" />
+        /// <seealso cref="MainMenuActions.RemoveCallbacks(IMainMenuActions)" />
+        /// <seealso cref="MainMenuActions.UnregisterCallbacks(IMainMenuActions)" />
+        public void SetCallbacks(IMainMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MainMenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MainMenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="MainMenuActions" /> instance referencing this action map.
+    /// </summary>
+    public MainMenuActions @MainMenu => new MainMenuActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -2360,5 +2454,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnConsole(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "MainMenu" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="MainMenuActions.AddCallbacks(IMainMenuActions)" />
+    /// <seealso cref="MainMenuActions.RemoveCallbacks(IMainMenuActions)" />
+    public interface IMainMenuActions
+    {
     }
 }

@@ -45,8 +45,12 @@ namespace ASUL.NPC.PlayerDetection
 
         private bool PlayerIsVisible => !(PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.NeurochipInvisible || PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.ConsoleInvisible);
 
+        public static bool DoesAnyoneSee;
+
         private void Awake()
         {
+            DoesAnyoneSee = false;
+
             if (Target == null)
             {
                 var player = GameObject.FindGameObjectWithTag("Player");
@@ -64,22 +68,19 @@ namespace ASUL.NPC.PlayerDetection
 
                 FindAllyWhoDetect();
 
-                if (IsTargetDetected)
+                float visibilityChange = 0f;
+                if (IsTargetDetected && PlayerIsVisible)
                 {
+                    visibilityChange = visibilityValue;
+                }
 
-                    if (PlayerIsVisible)
-                    {
-                        PlayerVisibilityManager.OnVisibillityAdded.Invoke(visibilityValue);
-                    }
-                    else if (PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.NeurochipInvisible)
-                    {
-                        NeuroChip.OnChargeChanged?.Invoke(-unchargeValue);
-                    }
-                }
-                else
+                if (IsTargetDetected && PlayerVisibilityManager.PlayerVisibilityState == PlayerVisibilityState.NeurochipInvisible)
                 {
-                    PlayerVisibilityManager.OnVisibillityAdded.Invoke(-visibilityValue + (visibilityValue * 50f / 100f));
+                    NeuroChip.OnChargeChanged?.Invoke(-unchargeValue);
                 }
+
+                if (visibilityChange != 0f)
+                    PlayerVisibilityManager.OnVisibillityAdded?.Invoke(visibilityChange);
 
                 if (IsTargetDetected != _lastDetected)
                 {
@@ -92,16 +93,10 @@ namespace ASUL.NPC.PlayerDetection
                 {
                     onAllyDetected?.Invoke();
                 }
-
-            }
-
-            if (IsTargetDetected != _lastDetected)
-            {
-                if (IsTargetDetected) onTargetSpotted?.Invoke();
-                else onTargetLost?.Invoke();
-                _lastDetected = IsTargetDetected;
             }
         }
+
+
 
         private void FindAllyWhoDetect()
         {
@@ -187,6 +182,7 @@ namespace ASUL.NPC.PlayerDetection
             IsInFov = false;
             HasLineOfSight = false;
         }
+
 
         private void OnDrawGizmosSelected()
         {

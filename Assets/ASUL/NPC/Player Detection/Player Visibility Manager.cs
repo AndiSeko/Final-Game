@@ -13,6 +13,8 @@ namespace ASUL.NPC.PlayerDetection
 
         [SerializeField] private PlayerVisibilityViewier viewier;
 
+        [SerializeField] private float decayPerSecond = 5f;
+
         private float _visibillityProgress;
 
         public static Action<float> OnVisibillityAdded;
@@ -81,11 +83,25 @@ namespace ASUL.NPC.PlayerDetection
             return v;
         }
 
+        private void Update()
+        {
+            if (_visibillityProgress > 0f)
+            {
+                AddVisibilityProgress(-decayPerSecond * Time.deltaTime);
+            }
+        }
+
         private void Awake()
         {
             PlayerVisibilityState = _defaultPlayerVisibilityState;
             OnVisibillityAdded += AddVisibilityProgress;
         }
+
+        private void OnDisable()
+        {
+            OnVisibillityAdded -= AddVisibilityProgress;
+        }
+
 
     }
 
