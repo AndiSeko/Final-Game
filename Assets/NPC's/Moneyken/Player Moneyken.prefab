@@ -385,7 +385,6 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: bcd0afaa70ccfce4085519c76d97218d, type: 2}
   - {fileID: 2100000, guid: dc41c4a77a9cdd348804e55d174d38cd, type: 2}
-  - {fileID: 2100000, guid: 202d96895dd28ed4a893e8266567c8ed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2183,7 +2182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultPlayerVisibilityState: 0
   viewier: {fileID: 0}
-  decayPerSecond: 10
+  decayPerSecond: 30
 --- !u!208 &6713356762072792617
 NavMeshObstacle:
   m_ObjectHideFlags: 0

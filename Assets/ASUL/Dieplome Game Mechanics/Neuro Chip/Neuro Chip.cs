@@ -57,6 +57,7 @@ namespace ASUL.Dieplome.NeuroChip
         private void View(InputAction.CallbackContext ctx)
         {
             viewier.IsView = true;
+            viewier.ToggleOpen(true);
 
             ToggleVisible(true);
 
@@ -70,6 +71,7 @@ namespace ASUL.Dieplome.NeuroChip
         private void Unview(InputAction.CallbackContext ctx)
         {
             viewier.IsView = false;
+            viewier.ToggleOpen(false);
 
             ToggleVisible(false);
 

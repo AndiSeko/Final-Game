@@ -1,10 +1,11 @@
+using ASUL.Canvas;
 using MPUIKIT;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace ASUL.Dieplome.NeuroChip
 {
-    public class NeuroChipViewer : MonoBehaviour
+    public class NeuroChipViewer : CanvasGroupLauncher
     {
         private float visibility = 0f;
 
