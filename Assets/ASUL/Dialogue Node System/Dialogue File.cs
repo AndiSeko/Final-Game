@@ -6,6 +6,6 @@ namespace ASUL.DNS.Save
     [CreateAssetMenu(fileName = "DialogueFile", menuName = "ASUL/DialogueFile")]
     public class DialogueFile : ScriptableObject
     {
-        public SerializableDictionary<ASUL.Localization.Localization, DialogueSO> Localizations;
+        public SerializableDictionary<string, DialogueSO> Localizations;
     }
 }

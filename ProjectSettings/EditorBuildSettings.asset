@@ -12,5 +12,7 @@ EditorBuildSettings:
     path: Assets/LEVELS/0. Polygon/Polygon.unity
     guid: 295e808de93250f4e8f7e62690d1fe50
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 104fcd45fe673e649a57e95bdef525bd, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.localization.settings: {fileID: 11400000, guid: 576b9ea6147b4cf499122f0e2a96e13a, type: 2}
   m_UseUCBPForAssetBundles: 0

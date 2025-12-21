@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ namespace ASUL.Localization
     public class TMPLocalizator : MonoBehaviour
     {
         private TextMeshProUGUI m_TextMeshPro;
-        [SerializeField] private SerializableDictionary<Localization, string> localizationValues;
+        [SerializeField] private SerializableDictionary<string, string> localizationValues;
 
 
         private void Awake()
@@ -18,21 +17,21 @@ namespace ASUL.Localization
 
         private void OnEnable()
         {
-            LocalizationManager.OnLocalizationChanged += SetLocalization;
+            LocalizationManager.OnLanguageChanged += SetLocalization;
         }
 
         private void OnDisable()
         {
-            LocalizationManager.OnLocalizationChanged -= SetLocalization;
+            LocalizationManager.OnLanguageChanged -= SetLocalization;
         }
 
 
         private void Start()
         {
-            SetLocalization(LocalizationManager.Instance.Localization);
+            SetLocalization(LocalizationManager.Instance.CurrentLanguageCode);
         }
 
-        private void SetLocalization(Localization localization)
+        private void SetLocalization(string localization)
         {
             if (localizationValues[localization] != null)
             {

@@ -1,16 +1,20 @@
-using System;
+using ASUL.Console;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 namespace ASUL.Localization
 {
     public class LocalizationManager : MonoBehaviour
     {
         public static LocalizationManager Instance { get; private set; }
-        public Localization Localization { get => _localization; set { SetLocalization(value); } }
 
-        private Localization _localization = Localization.en;
+        public string CurrentLanguageCode { get; private set; } = "en";
 
-        public static Action<Localization> OnLocalizationChanged;
+        public static System.Action<string> OnLanguageChanged;
+
+        public Locale CurrentLocale => LocalizationSettings.SelectedLocale;
 
         private void Awake()
         {
@@ -23,23 +27,70 @@ namespace ASUL.Localization
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            string localization = PlayerPrefs.GetString("Localization", "en");
+            StartCoroutine(InitializeLocalization());
+        }
 
-            if (System.Enum.TryParse(localization, out Localization parsedLocalization))
+        private IEnumerator InitializeLocalization()
+        {
+            yield return LocalizationSettings.InitializationOperation;
+
+            UpdateCurrentLanguageCode();
+
+            LocalizationSettings.SelectedLocaleChanged += OnUnityLocaleChanged;
+        }
+
+        private void OnUnityLocaleChanged(Locale newLocale)
+        {
+            UpdateCurrentLanguageCode();
+        }
+
+        private void UpdateCurrentLanguageCode()
+        {
+            var selected = LocalizationSettings.SelectedLocale;
+            if (selected == null)
             {
-                Localization = parsedLocalization;
+                Debug.LogWarning("Выбранная локализация равна null!");
+                return;
+            }
+
+            string newCode = selected.Identifier.Code;
+
+            if (newCode != CurrentLanguageCode)
+            {
+                CurrentLanguageCode = newCode;
+                OnLanguageChanged?.Invoke(newCode);
+            }
+        }
+        public void SetLanguage(string languageCode)
+        {
+            Locale targetLocale = LocalizationSettings.AvailableLocales.Locales
+                .Find(l => l.Identifier.Code.StartsWith(languageCode, System.StringComparison.OrdinalIgnoreCase));
+
+            if (targetLocale != null)
+            {
+                LocalizationSettings.SelectedLocale = targetLocale;
             }
             else
             {
-                Localization = Localization.en;
+                Debug.LogWarning($"Локализация '{languageCode}' не найдена!");
             }
         }
 
-        public void SetLocalization(Localization language)
+        public void SetLocale(Locale locale)
         {
-            _localization = language;
-            PlayerPrefs.SetString("Localization", language.ToString());
-            OnLocalizationChanged?.Invoke(language);
+            if (locale != null && LocalizationSettings.AvailableLocales.Locales.Contains(locale))
+            {
+                LocalizationSettings.SelectedLocale = locale;
+            }
+        }
+
+
+        public void LoadSavedLanguage()
+        {
+            if (PlayerPrefs.HasKey("Localization"))
+            {
+                SetLanguage(PlayerPrefs.GetString("Localization"));
+            }
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -52,21 +103,14 @@ namespace ASUL.Localization
             }
         }
 
+#if UNITY_EDITOR
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
-                if (Localization == Localization.ru)
-                    Localization = Localization.en;
-                else
-                    Localization = Localization.ru;
+                SetLanguage(CurrentLanguageCode.StartsWith("ru") ? "en" : "ru");
             }
         }
-    }
-
-    public enum Localization
-    {
-        ru,
-        en
+#endif
     }
 }
