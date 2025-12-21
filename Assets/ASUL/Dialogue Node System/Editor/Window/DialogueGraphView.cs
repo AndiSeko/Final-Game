@@ -13,7 +13,7 @@ namespace ASUL.DNS.Window
     public class DialogueGraphView : GraphView
     {
 
-        private DialogueEditorWindow editorWindow;
+        private DialogueEditorWindow editorWindow;  
         DSSearchWindow searchWindow;
         private MiniMap miniMap;
 

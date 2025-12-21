@@ -57,6 +57,9 @@ namespace ASUL.Console
 
         private void Info()
         {
+            string dataPath = Application.dataPath.Replace("\\", "/");
+            string persistentPath = Application.persistentDataPath.Replace("\\", "/");
+
             ConsoleViewer.OnConsoleLog?.Invoke("<style=Console><color=#36CF8C>Console v 2.0</color></style>" +
                 "\nCreated by Andi Seko" +
                 "\n© ASUL 2025" +
@@ -66,7 +69,8 @@ namespace ASUL.Console
                 $"\nVersion: {Application.version}" +
                 $"\nPlatform: {Application.platform}" +
                 $"\nCreator: {Application.companyName}" +
-                $"\nData path: {Application.dataPath}" +
+                $"\nData path: <link=\"folder:{dataPath}\">{dataPath}</link>" +
+                $"\nPersistent data path: <link=\"folder:{persistentPath}\">{persistentPath}</link>" +
                 $"\nUnity version: {Application.unityVersion}");
         }
 
