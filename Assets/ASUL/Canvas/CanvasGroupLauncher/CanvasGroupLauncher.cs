@@ -1,10 +1,14 @@
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace ASUL.Canvas
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class CanvasGroupLauncher : MonoBehaviour
     {
+
+        public bool IsOpened { get; protected set; }
+
 
         [SerializeField] protected bool isOpenedInAwake;
 
@@ -14,14 +18,7 @@ namespace ASUL.Canvas
         {
             canvasGroup = GetComponent<CanvasGroup>();
 
-            if (isOpenedInAwake)
-            {
-                Open();
-            }
-            else
-            {
-                Close();
-            }
+            ToggleOpen(isOpenedInAwake);
         }
 
         public void ToggleOpen(bool value)
@@ -45,6 +42,7 @@ namespace ASUL.Canvas
 
         protected virtual void Open()
         {
+            IsOpened = true;
             canvasGroup.alpha = 1.0f;
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
@@ -52,6 +50,7 @@ namespace ASUL.Canvas
 
         protected virtual void Close()
         {
+            IsOpened = false;
             canvasGroup.alpha = 0.0f;
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ede995eb28835541b52a3b00f072772, type: 3}
+  m_Name: 0x0
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: 0x0
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 70ac251c-c316-4193-a81d-570061dfba20
+    <Name>k__BackingField: node
+    <Text>k__BackingField:
+      m_TableReference:
+        m_TableCollectionName: Dialogues
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: '[0x0] 1'
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    <Events>k__BackingField: 
+    <CharacterName>k__BackingField: Guide Man
+    <CharacterNameColor>k__BackingField: {r: 0.13333334, g: 0.33333334, b: 0.33333334, a: 1}
+    <CharacterIcon>k__BackingField: {fileID: 0}
+    <Character>k__BackingField: {fileID: 11400000, guid: e68808c0f396b974a888d1e6edec136a, type: 2}
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+    <Voiceover>k__BackingField: {fileID: 0}
+    <DelayTime>k__BackingField: 0
+    <GroupID>k__BackingField: 
+    <DialogueNodeType>k__BackingField: 1
+    <Position>k__BackingField: {x: 95.2, y: -15.2}
+  <OldGroupNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - node
+  <OldGroupedNodeNames>k__BackingField:
+    list: []
+  references:
+    version: 2
+    RefIds: []

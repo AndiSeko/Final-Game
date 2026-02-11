@@ -114,7 +114,7 @@ namespace ASUL.Console
 
             foreach (var command in commandHistory)
             {
-                if (!CommandDatabaseSample.IsCommandList(command.command))
+                if (!CommandDatabase.CurrentDatabase.IsCommandList(command.command))
                 {
                     toRemove.Add(command);
                 }

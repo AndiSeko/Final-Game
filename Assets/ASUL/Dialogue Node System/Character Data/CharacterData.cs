@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ASUL.DNS.Data
 {
-    [CreateAssetMenu(fileName = "Character", menuName = "Scriptable Objects/Character")]
+    [CreateAssetMenu(fileName = "Character", menuName = "ASUL/Dialogue Character")]
     public class CharacterData : ScriptableObject
     {
         public string Name = "noname";

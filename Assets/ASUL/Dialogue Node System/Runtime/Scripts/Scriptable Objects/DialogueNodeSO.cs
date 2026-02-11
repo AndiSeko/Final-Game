@@ -1,13 +1,14 @@
 using ASUL.DNS.Data;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace ASUL.DNS
 {
     public class DialogueNodeSO : ScriptableObject
     {
         [field: SerializeField] public string DialogueName { get; set; }
-        [field: SerializeField][field: TextArea()] public string Text { get; set; }
+        [field: SerializeField][field: TextArea()] public LocalizedString Text { get; set; }
         [field: SerializeField] public string Events { get; set; }
         [field: SerializeField] public string CharacterName { get; set; }
         [field: SerializeField] public Color CharacterNameColor { get; set; }
@@ -19,7 +20,7 @@ namespace ASUL.DNS
         [field: SerializeField] public DialogueNodeTypes DialogueNodeType { get; set; }
         [field: SerializeField] public bool IsStartingDialogue { get; set; }
 
-        public void Initialyze(string dialogueName, string text, string events, string characterName, Color characterNameColor, Sprite characterIcon, AudioClip voiceover, float delay, List<DialogueChoiceData> choices, DialogueNodeTypes dialogueNodeType, bool isStartingDialogue)
+        public void Initialyze(string dialogueName, LocalizedString text, string events, string characterName, Color characterNameColor, Sprite characterIcon, AudioClip voiceover, float delay, List<DialogueChoiceData> choices, DialogueNodeTypes dialogueNodeType, bool isStartingDialogue)
         {
             DialogueName = dialogueName;
             Text = text;

@@ -5,7 +5,7 @@ namespace ASUL.NPC.PlayerDetection
 {
     public class PlayerVisibilityManager : MonoBehaviour
     {
-        public static Action OnPlayerDetected;
+        public static Action PlayerDetected;
 
         public static PlayerVisibilityState PlayerVisibilityState = PlayerVisibilityState.Default;
         
@@ -17,7 +17,7 @@ namespace ASUL.NPC.PlayerDetection
 
         private float _visibillityProgress;
 
-        public static Action<float> OnVisibillityAdded;
+        public static Action<float> VisibillityAdded;
 
         private void AddVisibilityProgress(float value)
         {
@@ -30,7 +30,7 @@ namespace ASUL.NPC.PlayerDetection
 
                 _visibillityProgress = 100;
                 AICommandCenter.PlayerIsDetected = true;
-                OnPlayerDetected?.Invoke();
+                PlayerDetected?.Invoke();
 
                 Debug.Log("Вас обнаружили!");
 
@@ -94,12 +94,12 @@ namespace ASUL.NPC.PlayerDetection
         private void Awake()
         {
             PlayerVisibilityState = _defaultPlayerVisibilityState;
-            OnVisibillityAdded += AddVisibilityProgress;
+            VisibillityAdded += AddVisibilityProgress;
         }
 
         private void OnDisable()
         {
-            OnVisibillityAdded -= AddVisibilityProgress;
+            VisibillityAdded -= AddVisibilityProgress;
         }
 
 

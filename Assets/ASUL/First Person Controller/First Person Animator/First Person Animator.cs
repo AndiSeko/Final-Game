@@ -7,7 +7,7 @@ namespace ASUL.FPC.Animations
 {
     public class FirstPersonAnimator : MonoBehaviour
     {
-        public static Action<Animator> OnExternalKinemation;
+        public static Action<Animator> ExternalKinemation;
 
         [SerializeField] private FirstPersonController controller;
         [SerializeField] private Animator animator;
@@ -67,7 +67,7 @@ namespace ASUL.FPC.Animations
             if (animator == null || cameraTransform == null) return;
             animator.SetLookAtWeight(1f, 0f, 1f, 0.3f, 0.5f);
             animator.SetLookAtPosition(cameraTransform.position + cameraTransform.forward * 10f);
-            OnExternalKinemation?.Invoke(animator);
+            ExternalKinemation?.Invoke(animator);
         }
     }
 }

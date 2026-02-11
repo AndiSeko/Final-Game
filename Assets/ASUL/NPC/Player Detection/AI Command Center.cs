@@ -90,7 +90,7 @@ namespace ASUL.NPC
                     npc.animator.SetTrigger("Normal");
                 }
                 PlayerIsDetected = false;
-                PlayerVisibilityManager.OnVisibillityAdded?.Invoke(-100f);
+                PlayerVisibilityManager.VisibillityAdded?.Invoke(-100f);
                 NPCAttackMode.OnTargetElminated?.Invoke();
                 idleTimer = 0f;
                 IsElminated = true;
@@ -103,7 +103,7 @@ namespace ASUL.NPC
                 if (idleTimer >= idleDelay)
                 {
                     PlayerIsDetected = false;
-                    PlayerVisibilityManager.OnVisibillityAdded?.Invoke(-100f);
+                    PlayerVisibilityManager.VisibillityAdded?.Invoke(-100f);
                     foreach (NPCAttackMode npc in NPCs)
                     {
                         npc.state = NPCAttackMode.NPCState.Idle;

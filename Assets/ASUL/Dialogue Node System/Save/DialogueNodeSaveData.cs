@@ -3,6 +3,7 @@ using ASUL.DNS.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace ASUL.DNS.Save
 {
@@ -11,7 +12,7 @@ namespace ASUL.DNS.Save
     {
         [field: SerializeField] public string ID { get; set; }
         [field: SerializeField] public string Name { get; set; }
-        [field: SerializeField] public string Text { get; set; }
+        [field: SerializeField] public LocalizedString Text { get; set; }
         [field: SerializeField] public string Events { get; set; }
         [field: SerializeField] public string CharacterName { get; set; }
         [field: SerializeField] public Color CharacterNameColor { get; set; }

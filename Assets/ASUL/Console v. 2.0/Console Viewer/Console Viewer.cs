@@ -81,7 +81,7 @@ namespace ASUL.Console
         private void OnEnterPress(InputAction.CallbackContext ctx)
         {
             CommandProcessor.OnSendCommand?.Invoke(commandLine.text);
-            if(CommandDatabaseSample.IsCommandList(commandLine.text))
+            if(CommandDatabase.CurrentDatabase.IsCommandList(commandLine.text))
                 commandBuffer.Save(commandLine.text);
             commandLine.text = string.Empty;
             ScrollToTheEnd();

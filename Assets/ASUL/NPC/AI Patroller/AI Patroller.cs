@@ -26,7 +26,7 @@ namespace ASUL.NPC
             if (animator != null)
                 animator.SetBool("IsWalking", !isWaiting);
 
-            PlayerVisibilityManager.OnPlayerDetected += Disable;
+            PlayerVisibilityManager.PlayerDetected += OnPlayerDetected;
         }
 
         private void OnEnable()
@@ -40,10 +40,10 @@ namespace ASUL.NPC
 
         private void OnDisable()
         {
-            PlayerVisibilityManager.OnPlayerDetected -= Disable;
+            PlayerVisibilityManager.PlayerDetected -= OnPlayerDetected;
         }
 
-        private void Disable()
+        private void OnPlayerDetected()
         {
             agent.ResetPath();
             animator.SetBool("IsWalking", false);

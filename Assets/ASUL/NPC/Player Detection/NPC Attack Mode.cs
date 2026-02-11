@@ -104,6 +104,10 @@ namespace ASUL.NPC
                     animator.SetBool("IsWalking", false);
                     break;
                 case NPCState.Finder:
+                    if (ResetInvalidPath(observer.Target.position))
+                    {
+                        break;
+                    }
                     agent.SetDestination(observer.Target.position);
                     animator.SetBool("IsWalking", true);
                     CheckEliminationDistance();
@@ -140,11 +144,8 @@ namespace ASUL.NPC
                             ? observer.Target.position
                             : lastKnownPosition;
 
-                        if (!CanReach(targetPos))
+                        if (ResetInvalidPath(targetPos))
                         {
-                            agent.ResetPath();
-                            animator.SetBool("IsWalking", false);
-                            state = NPCState.Idle;
                             break;
                         }
 
@@ -185,6 +186,19 @@ namespace ASUL.NPC
             agent.speed = baseSpeed;
             PlayerVisibilityManager.PlayerVisibilityState = PlayerVisibilityState.Dead;
             isAggressive = false; 
+        }
+
+        private bool ResetInvalidPath(Vector3 targetPos)
+        {
+            if (!CanReach(targetPos))
+            {
+                agent.ResetPath();
+                animator.SetBool("IsWalking", false);
+                state = NPCState.Idle;
+                return true;
+            }
+
+            return false;
         }
 
         private bool CanReach(Vector3 target)

@@ -1,30 +1,34 @@
 #if UNITY_EDITOR
+using ASUL.DNS.Data;
 using ASUL.DNS.Save;
 using ASUL.DNS.Window;
+using System.Collections.Generic;
+using System.Linq; // Добавлено для LINQ (Any, FirstOrDefault и т.д.)
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.Localization;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UIElements;
 
 namespace ASUL.DNS
 {
     public class NonePersonMultipleChoiceNode : DialogueNode
     {
-
         public override void Initialize(string nodeName, DialogueGraphView DSgraphView, Vector2 position)
         {
             base.Initialize(nodeName, DSgraphView, position);
-
             DialogueNodeType = DialogueNodeTypes.NonePersonMultipleChoice;
             CharacterName = "noname";
             NameColor = Color.white;
             Icon = null;
 
-            DialogueChoiceSaveData choiceData = new DialogueChoiceSaveData()
+            DialogueChoiceSaveData choiceData = new DialogueChoiceSaveData
             {
-                Text = "Output"
+                Text = new LocalizedString("Dialogues", "")
             };
-
             Choices.Add(choiceData);
         }
 
@@ -35,9 +39,8 @@ namespace ASUL.DNS
 
             var nameField = DialogueElementUtility.CreateTextField(CharacterName, null, callback =>
             {
-                Text = callback.newValue;
+                CharacterName = callback.newValue;
             });
-            nameField.RegisterValueChangedCallback(evt => CharacterName = evt.newValue);
             nameField.AddToClassList("ds-node__textfield");
             dataFoldout.Add(nameField);
 
@@ -60,70 +63,90 @@ namespace ASUL.DNS
 
             base.Draw();
 
-            Button addChoiceButton = DialogueElementUtility.CreateButton("Add choice", () =>
-            {
-                DialogueChoiceSaveData choiceData = new DialogueChoiceSaveData()
-                {
-                    Text = "New Choice"
-                };
-
-                Choices.Add(choiceData);
-
-                Port choicePort = CreateChoicePort(choiceData);
-
-                outputContainer.Add(choicePort);
-
-            });
-
+            Button addChoiceButton = DialogueElementUtility.CreateButton("Add choice", AddNewChoice);
             addChoiceButton.AddToClassList("ds-node__button");
-
             mainContainer.Insert(1, addChoiceButton);
 
-            foreach (DialogueChoiceSaveData choice in Choices)
+
+            RefreshChoicesVisual();
+        }
+
+        private void AddNewChoice()
+        {
+            DialogueChoiceSaveData choiceData = new DialogueChoiceSaveData
             {
-                Port choicePort = CreateChoicePort(choice);
-
-                outputContainer.Add(choicePort);
-            }
-
+                Text = new LocalizedString("Dialogues", "") 
+            };
+            Choices.Add(choiceData);
+            RefreshChoicesVisual();
             RefreshExpandedState();
         }
 
-        Port CreateChoicePort(object userData)
+        private void RefreshChoicesVisual()
+        {
+ 
+            for (int i = outputContainer.childCount - 1; i >= 0; i--)
+            {
+                if (outputContainer[i] is Port port && port.direction == Direction.Output)
+                    outputContainer.RemoveAt(i);
+            }
+
+            var tableNames = new List<string>();
+#if UNITY_EDITOR
+            string[] guids = AssetDatabase.FindAssets("t:StringTableCollection");
+            foreach (string guid in guids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                var collection = AssetDatabase.LoadAssetAtPath<StringTableCollection>(path);
+                if (collection != null)
+                    tableNames.Add(collection.TableCollectionName);
+            }
+#endif
+            if (!tableNames.Any()) tableNames.Add("Dialogues");
+
+            foreach (DialogueChoiceSaveData choice in Choices)
+            {
+                Port choicePort = CreateChoicePort(choice, tableNames);
+                outputContainer.Add(choicePort);
+            }
+        }
+
+        private Port CreateChoicePort(DialogueChoiceSaveData choiceData, List<string> tableNames)
         {
             Port choicePort = this.CreatePort();
+            choicePort.userData = choiceData;
 
-            choicePort.userData = userData;
+            VisualElement container = new VisualElement();
+            container.style.flexDirection = FlexDirection.Row;
 
-            DialogueChoiceSaveData choiceData = (DialogueChoiceSaveData)userData;
+            string currentTable = choiceData.Text.TableReference.TableCollectionName ?? "Dialogues";
+            if (!tableNames.Contains(currentTable))
+                currentTable = tableNames.FirstOrDefault() ?? "Dialogues";
 
-            Button deleteChoiseButton = DialogueElementUtility.CreateButton("X", () =>
+            PopupField<string> tableField = new PopupField<string>("Table", tableNames, currentTable);
+            tableField.RegisterValueChangedCallback(evt => choiceData.Text.TableReference = evt.newValue);
+
+            TextField keyField = new TextField("Key")
             {
-                if (Choices.Count == 1)
-                {
-                    return;
-                }
+                value = choiceData.Text.TableEntryReference.Key ?? ""
+            };
+            keyField.RegisterValueChangedCallback(evt => choiceData.Text.TableEntryReference = evt.newValue);
 
-                if (choicePort.connected)
-                {
-                    graphView.DeleteElements(choicePort.connections);
-                }
-
+            Button deleteButton = DialogueElementUtility.CreateButton("X", () =>
+            {
+                if (Choices.Count <= 1) return;
+                if (choicePort.connected) graphView.DeleteElements(choicePort.connections);
                 Choices.Remove(choiceData);
                 graphView.RemoveElement(choicePort);
+                RefreshChoicesVisual();
             });
+            deleteButton.AddToClassList("ds-node__button");
 
-            deleteChoiseButton.AddToClassList("ds-node__button");
+            container.Add(tableField);
+            container.Add(keyField);
+            container.Add(deleteButton);
+            choicePort.Add(container);
 
-            TextField choiceTextField = DialogueElementUtility.CreateTextField(choiceData.Text, null, callback =>
-            {
-                choiceData.Text = callback.newValue;
-            });
-
-            choiceTextField.AddClasses("ds-node__choice-text-field", "ds-node__text-field__hidden");
-
-            choicePort.Add(choiceTextField);
-            choicePort.Add(deleteChoiseButton);
             return choicePort;
         }
     }

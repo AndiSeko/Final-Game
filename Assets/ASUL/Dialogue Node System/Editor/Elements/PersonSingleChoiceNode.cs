@@ -5,6 +5,7 @@ using ASUL.DNS.Window;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UIElements;
 
 namespace ASUL.DNS
@@ -28,16 +29,13 @@ namespace ASUL.DNS
         public override void Initialize(string nodeName, DialogueGraphView DSgraphView, Vector2 position)
         {
             base.Initialize(nodeName, DSgraphView, position);
-
             DialogueNodeType = DialogueNodeTypes.PersonSingleChoice;
 
             DialogueChoiceSaveData choiceData = new DialogueChoiceSaveData()
             {
-                Text = "Output"
+                Text = new LocalizedString("Dialogues", "output")
             };
-
             Choices.Add(choiceData);
-
         }
 
         public override void Draw()
@@ -62,12 +60,9 @@ namespace ASUL.DNS
 
             foreach (DialogueChoiceSaveData choice in Choices)
             {
-                Port choicePort = this.CreatePort(choice.Text);
-
+                Port choicePort = this.CreatePort("Output");
+                choicePort.portName = "Output";
                 choicePort.userData = choice;
-
-                choicePort.portName = choice.Text;
-
                 outputContainer.Add(choicePort);
             }
 

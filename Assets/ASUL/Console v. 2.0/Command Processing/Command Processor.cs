@@ -29,7 +29,7 @@ namespace ASUL.Console
 
             foreach (Command command in commands)
             {
-                CommandDatabaseSample.OnCommandProcess(command);
+                DieplomeCommandDatabase.CommandProcess(command);
             }
         }
 

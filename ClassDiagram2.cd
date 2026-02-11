@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ASUL.Canvas.CanvasGroupLauncher" Collapsed="true">
+    <Position X="18.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAACAAAAAAAIAAAAAAAAAAAAAIAEAAAAAAAAACAAEA=</HashCode>
+      <FileName>Assets\ASUL\Canvas\CanvasGroupLauncher\CanvasGroupLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.CommandDatabase" Collapsed="true">
+    <Position X="25.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Command Processing\Command Database\Command Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.CommandDatabaseSample" Collapsed="true">
+    <Position X="25.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAUAAAAAAAAAAACIAAAAAEBACgA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Command Processing\Command Database\Sample Database\CommandDatabaseSample.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.CSetAvailable" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAgAAAAAAAAAAAAAAIAAAIAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Command Processing\Command Database\Sample Database\CSetAМaible.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.CommandProcessor" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABIAAAAAAgAAAAAAAAAAAAAIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Command Processing\Command Processor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.Command" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAgAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Command Processing\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.CommandReader" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAgAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAABQAAAA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Command Processing\CommandReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.CommandBuffer" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQgIAAAAAAAQCAAIAAAAABAAAAAAAAAAAAAAAAgEA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Console Viewer\Command Buffer\Command Buffer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.CommandData" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Console Viewer\Command Buffer\Command Buffer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.ConsoleLauncher" Collapsed="true">
+    <Position X="21.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAACAAAAAAAAIAAAAAACACAA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Console Viewer\Console Launcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Console.ConsoleViewer" Collapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAIAAASAIAQAIUgAAABIIhAAAAIEAAAAgAACEA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Console Viewer\Console Viewer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSetPreset" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAgAAAEAAAAAAAEAAAAAAAgAAggAAAAAAAIA=</HashCode>
+      <FileName>Assets\ASUL\Console v. 2.0\Command Processing\Command Database\Sample Database\CSetPreset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SerializableDictionary" Collapsed="true">
+    <Position X="25.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\SerializableDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SerializableDictionary&lt;TKey, TValue&gt;" Collapsed="true">
+    <Position X="25.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAAgAAAEAEABAQCAAABEQAAABAAAAEAgAgAABQIAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\SerializableDictionary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DialogueReader" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAgAAAAAAEAAAAgAAAAAAAQAAEEAAAAEA=</HashCode>
+      <FileName>Assets\ASUL\Dieplome Game Mechanics\Dialogue System\Scripts\Dialogue Reader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DialogueWindowViewier" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\ASUL\Dieplome Game Mechanics\Dialogue System\Scripts\Dialogue Window Viewier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DialogueWindowLauncher" Collapsed="true">
+    <Position X="17.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAIAEIAAAAIQAAAAAAAAAAQAAAAACAAEA=</HashCode>
+      <FileName>Assets\ASUL\Dieplome Game Mechanics\Dialogue System\Scripts\DialogueWindowLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerSceneInitialyzer" Collapsed="true">
+    <Position X="25.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Dieplome Game Mechanics\Player Scene Initialyzer\Player Scene Initialyzer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="@InputSystem_Actions" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SLKGAALAADAgJhAiAAKEm5ELYAIXBmAUAGEgIHhSAsA=</HashCode>
+      <FileName>Assets\ASUL\Input System\InputSystem_Actions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DemoController" Collapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAIAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Required Assets\MPUIKit\Demos\Scripts\DemoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outline" Collapsed="true">
+    <Position X="20" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gARBAQhgABEAAAAQgAEAAAACAQAAAgAIAQAQAAAAyEg=</HashCode>
+      <FileName>Assets\ASUL\Required Assets\QuickOutline\Scripts\Outline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebsiteLauncher" Collapsed="true">
+    <Position X="23.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\WEB\Website Launcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Door" Collapsed="true">
+    <Position X="16" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAEA=</HashCode>
+      <FileName>Assets\INTERACTBLE ITEMS\Active Door\Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.DNS.Data.CharacterData" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\Character Data\CharacterData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.DNS.DialogueChoiceData" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\Runtime\Scripts\Data\DialogueChoiceData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.DNS.DialogueGroupSO" Collapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\Runtime\Scripts\Scriptable Objects\DialogueGroupSO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.DNS.DialogueNodeSO" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgABAEAAAAAAgAAAAAKAAABCQAgCBA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\Runtime\Scripts\Scriptable Objects\DialogueNodeSO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.DNS.DialogueSO" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAACAAQAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\Runtime\Scripts\Scriptable Objects\DialogueSO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.DNS.Save.DialogueChoiceSaveData" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\Save\DialogueChoiceSaveData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.DNS.Save.DialogueGroupSaveData" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAgAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\Save\DialogueGroupSaveData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.DNS.Save.DialogueNodeSaveData" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAggBAAAAAQAAgAAAAAKAAAACQAgCAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\Save\DialogueNodeSaveData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.DNS.Save.DialogueSaveDataSO" Collapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAEAAAAAAAQAAAAAAAAAAAAAAAAABAAAgAQBAAAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\Save\DialogueSaveDataSO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Dieplome.NeuroChip.NeuroChipViewer" Collapsed="true">
+    <Position X="15" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIFAAAAEAAAAAAAAAAAAAAAAAAAAAAAAIAABBCAAA=</HashCode>
+      <FileName>Assets\ASUL\Dieplome Game Mechanics\Neuro Chip\Neuro Chip Viewier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Dieplome.NeuroChip.NeuroChipVisible" Collapsed="true">
+    <Position X="16.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAgMA=</HashCode>
+      <FileName>Assets\ASUL\Dieplome Game Mechanics\Neuro Chip\Neuro Chip Visible\Neuro Chip Visible.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Dieplome.NeuroChip.NeuroChip" Collapsed="true">
+    <Position X="14.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgABAAAAAACgAiAAEAAAAAAAAABAAAIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\ASUL\Dieplome Game Mechanics\Neuro Chip\Neuro Chip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Electronics.ElectricTransmitterTimed" Collapsed="true">
+    <Position X="13.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\ASUL\Electroniсs\Electric Transmitter Timed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Electronics.ElectricTransmitter" Collapsed="true">
+    <Position X="15" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAAAAAAIAAAAAAAAAQEAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Electroniсs\Electric Transmitter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Electronics.ElectricalSource" Collapsed="true">
+    <Position X="15" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAACAAAAAAAABA=</HashCode>
+      <FileName>Assets\ASUL\Electroniсs\Electrical Source.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Electronics.ElectronicRecipient" Collapsed="true">
+    <Position X="16" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Electroniсs\Electronic Recipient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.EventSystem.ASUPEvent" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Event System\Abstract Step.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.EventSystem.EventStep" Collapsed="true">
+    <Position X="14.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQCAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\ASUL\Event System\Abstract Step.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.EventSystem.ASULStaticClass" Collapsed="true">
+    <Position X="20.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Event System\ASUL Static Class.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.EventSystem.EventFile" Collapsed="true">
+    <Position X="13" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Event System\EventFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.EventSystem.Event" Collapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Event System\EventManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.EventSystem.EventManager" Collapsed="true">
+    <Position X="19" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAACAAAAAAgCAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Event System\EventManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.EventSystem.Timer" Collapsed="true">
+    <Position X="21.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAABAEAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Event System\Timer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.Animations.BodyControlPreset" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACEAAAAAAAAAAAAAABAAAAgBAAAgAAIAQAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\First Person Animator\Body Control Preset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.Animations.BodyControlRequest" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAFQAAAAAIAQAAAAAACAAAAAABCAIAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\First Person Animator\Body Control Request.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.Animations.BodyControlSystem" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAUAAEAAAAEEA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\First Person Animator\Body Control System.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.Animations.BodyManipulator" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAARAAAJAEIACAABAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\First Person Animator\Body Manipulator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.Animations.BodyDatabase" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAAAAAAIABAAAAAQBAAAEAAAABAAQAAEA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\First Person Animator\BodyDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.Animations.FirstPersonAnimator" Collapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>LAQAAAAEACgAAAEAAIAAogAAAAACAAAAAAAEACAAAAA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\First Person Animator\First Person Animator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.Animations.ManipulatorTrigger" Collapsed="true">
+    <Position X="25.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\First Person Animator\Manipulator Trigger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.FirstPersonController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQBIAgAgoAQAKBAEKAgoAAAABAAExWAAASEIAIAIEA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\First Person Controller.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ASUL.FPC.PlayerRagdollKiller" Collapsed="true">
+    <Position X="23.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAABAAAAAAAAAAAAAAgAAAIAAAAAAAAgAAAAAAIAgEA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\Player Ragdoll Killer\Player Ragdoll Killer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.Stealth" Collapsed="true">
+    <Position X="18.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAAAEAAAAAAAAAAAQCAAAAAAAAAAYAAIIAAAAAACCEA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\Stealth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.FPC.StealthLockZone" Collapsed="true">
+    <Position X="20" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAARAAAAAAAAAAAAIAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\StealthLockZone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.GameTime.DayManager" Collapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\GameTime\Day Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.InputSystem.InputManager" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBBAACAAAAAAKAAIAAAACAAAAAJAAAAQAACAAAAAEA=</HashCode>
+      <FileName>Assets\ASUL\Input System\Input Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Interactions.InteractableObject" Collapsed="true">
+    <Position X="19" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAABIAAAAAAAAAAAIAAAECIAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\ASUL\Interactions\Interactable Object\Interactable Object.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ASUL.Interactions.InteractableOutlineConfig" Collapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAIAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Interactions\Interactable Object\InteractableOutlineConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Interactions.Item" Collapsed="true">
+    <Position X="20" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Interactions\Interactable Object\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Interactions.PlayerInteractorViewier" Collapsed="true">
+    <Position X="19.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Interactions\Player Interactor\Player Interactor Viewier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Interactions.PlayerInteractor" Collapsed="true">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQACAACAAAAgAAAAAAAAAAAIBAAEAAIAAAAgIQQCEA=</HashCode>
+      <FileName>Assets\ASUL\Interactions\Player Interactor\Player Interactor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Interactions.Animation.BodyFixator" Collapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAIAEAAgAAAAIAAFABAgAgEBAAAAAEAEACVCAAgFQ=</HashCode>
+      <FileName>Assets\ASUL\Interactions\Interaction animator\Body Fixator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Interactions.Animation.DoubleChannelInteractableAnimatedObject" Collapsed="true">
+    <Position X="17.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Interactions\Interaction animator\Double Channel Interactable Animated Object.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Interactions.Animation.InteractableAnimatedObject" Collapsed="true">
+    <Position X="17.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAEIKAAAAAAAAAAAAAAAEAQAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Interactions\Interaction animator\Interactable Animated object.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Localization.LocalizationManager" Collapsed="true">
+    <Position X="23.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAAhAAAAAAACQAACAAAAAAAAQAAAIAAFgEA=</HashCode>
+      <FileName>Assets\ASUL\Localization\Localization Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.Localization.TMPLocalizator" Collapsed="true">
+    <Position X="21.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAQAEgAIAAAAAAAACEA=</HashCode>
+      <FileName>Assets\ASUL\Localization\TMP Localizator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.NPC.AIEnemyPatroller" Collapsed="true">
+    <Position X="23.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\NPC\AI Patroller\AI Enemy Patroller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.NPC.AIPatroller" Collapsed="true">
+    <Position X="23.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQABAAAAAAAASQAAAAQAgAAABAAAAAIAAAgAAAACEA=</HashCode>
+      <FileName>Assets\ASUL\NPC\AI Patroller\AI Patroller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.NPC.AICommandCenter" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEQAoAAYAAAAAAAAEAAAAAAACAAAAAAAAAAAIQAEA=</HashCode>
+      <FileName>Assets\ASUL\NPC\Player Detection\AI Command Center.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.NPC.NPCAttackMode" Collapsed="true">
+    <Position X="18.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQIAAACAEAQBQAAAAwUEAAAAgAgQIAEAAAQBAAAAsA=</HashCode>
+      <FileName>Assets\ASUL\NPC\Player Detection\NPC Attack Mode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.NPC.PlayerDetection.AIObserver" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBYAEBACAQMQJAAEIAAIFCQAgAAAAAEAAAAAAAgEBEk=</HashCode>
+      <FileName>Assets\ASUL\NPC\Player Detection\AI Observer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.NPC.PlayerDetection.PlayerVisibilityManager" Collapsed="true">
+    <Position X="13" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgBAAABAAQAAAAAKAAEAIAAAAAJAAAEA=</HashCode>
+      <FileName>Assets\ASUL\NPC\Player Detection\Player Visibility Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ASUL.NPC.PlayerDetection.PlayerVisibilityViewier" Collapsed="true">
+    <Position X="14.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAAAAAAQAAAAAAAAAAAAAAAIQAAACAAA=</HashCode>
+      <FileName>Assets\ASUL\NPC\Player Detection\Player Visibility Viewier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salvage.ClothingCuller.Components.ModularClothingSpawner" Collapsed="true">
+    <Position X="13" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAQAAAAAAAAAAQAARAAAAAAgACAIAAQAEA=</HashCode>
+      <FileName>Assets\ASUL\Required Assets\Clothing Culler\Examples\Modular Workflow\Code\ModularClothingSpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salvage.ClothingCuller.Components.RegisterAllOccludees" Collapsed="true">
+    <Position X="16.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAABAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Required Assets\Clothing Culler\Examples\Nested Workflow\Code\RegisterAllOccludees.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ASUL.FPC.IJumpable" Collapsed="true">
+    <Position X="14.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\IJumpable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ASUL.FPC.IWASDMovable" Collapsed="true">
+    <Position X="16.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\First Person Controller\IWASDMovable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ASUL.Interactions.IInteractable" Collapsed="true">
+    <Position X="13" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAECAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\ASUL\Interactions\Interactable Object\IInteractable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ASUL.DNS.DialogueNodeTypes" Collapsed="true">
+    <Position X="21.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAEAAAAAAAAAAAAIAAAAAAAAgAAAA=</HashCode>
+      <FileName>Assets\ASUL\Dialogue Node System\DialogueNodeTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ASUL.NPC.PlayerDetection.PlayerVisibilityState" Collapsed="true">
+    <Position X="25.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAIAACAAAAAAAAAAAACEAAAAA=</HashCode>
+      <FileName>Assets\ASUL\NPC\Player Detection\Player Visibility Manager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

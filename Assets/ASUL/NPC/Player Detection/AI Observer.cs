@@ -80,7 +80,7 @@ namespace ASUL.NPC.PlayerDetection
                 }
 
                 if (visibilityChange != 0f)
-                    PlayerVisibilityManager.OnVisibillityAdded?.Invoke(visibilityChange);
+                    PlayerVisibilityManager.VisibillityAdded?.Invoke(visibilityChange);
 
                 if (IsTargetDetected != _lastDetected)
                 {

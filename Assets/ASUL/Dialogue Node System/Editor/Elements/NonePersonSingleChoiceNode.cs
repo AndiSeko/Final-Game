@@ -4,6 +4,7 @@ using ASUL.DNS.Window;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UIElements;
 
 namespace ASUL.DNS
@@ -22,7 +23,7 @@ namespace ASUL.DNS
 
             DialogueChoiceSaveData choiceData = new DialogueChoiceSaveData()
             {
-                Text = "Output"
+                Text = new LocalizedString("Dialogues", "")
             };
 
             Choices.Add(choiceData);
@@ -59,9 +60,9 @@ namespace ASUL.DNS
 
             foreach (DialogueChoiceSaveData choice in Choices)
             {
-                Port choicePort = this.CreatePort(choice.Text);
+                Port choicePort = this.CreatePort("Output"); 
+                choicePort.portName = "Output";
                 choicePort.userData = choice;
-                choicePort.portName = choice.Text;
                 outputContainer.Add(choicePort);
             }
 

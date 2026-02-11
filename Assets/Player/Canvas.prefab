@@ -76,8 +76,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4286546944
+  m_fontColor: {r: 0, g: 0.5169811, b: 0.4986649, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -655,6 +655,8 @@ GameObject:
   - component: {fileID: 1778377354197539586}
   - component: {fileID: 3181591843020546229}
   - component: {fileID: 6957193754422222563}
+  - component: {fileID: 7834082563396511527}
+  - component: {fileID: 8579448771481526403}
   m_Layer: 5
   m_Name: Dialogue window
   m_TagString: Untagged
@@ -796,6 +798,31 @@ MonoBehaviour:
     - {r: 0, g: 0, b: 0, a: 0}
     - {r: 0, g: 0, b: 0, a: 0}
     m_Rotation: -90
+--- !u!225 &7834082563396511527
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841541963078155570}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &8579448771481526403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841541963078155570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a642e9b3ab23124fa10fdf16ca5c8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpenedInAwake: 0
 --- !u!1 &3839905414960045270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821350480616813881, guid: 30d83197aecced041a30d15716efba57, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00017402071
+      value: -0.00089721574
       objectReference: {fileID: 0}
     - target: {fileID: 7850840241118871731, guid: 30d83197aecced041a30d15716efba57, type: 3}
       propertyPath: m_text
