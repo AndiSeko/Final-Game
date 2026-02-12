@@ -6,11 +6,12 @@ namespace ASUL.InputSystem
 {
     public class InputManager : MonoBehaviour
     {
-
         private string defaultInputMap = "Player";
         private CursorLockMode defaultCursorLockMode = CursorLockMode.Locked;
 
         private string previousState;
+        private CursorLockMode previousCursorMode;
+
         private string currentState;
 
         public string CurrentState { get { return currentState; } }
@@ -65,11 +66,19 @@ namespace ASUL.InputSystem
         {
             if (!maps.ContainsKey(mapName))
             {
-                Debug.LogWarning($"Input map '{mapName}' not found!");
+                Debug.LogWarning($"Input map '{mapName}' не найден!");
+                return;
+            }
+
+            if (currentState == mapName)
+            {
+                Debug.LogWarning($"Ошибка перехода. Состояние не может перейти в само себя!");
                 return;
             }
 
             previousState = currentState;
+            previousCursorMode = Cursor.lockState;
+
             currentState = mapName;
 
             foreach (var map in maps.Values)
@@ -86,7 +95,15 @@ namespace ASUL.InputSystem
                 return;
             }
 
+            if (currentState == mapName)
+            {
+                Debug.LogWarning($"Ошибка перехода. Состояние не может перейти в само себя!");
+                return;
+            }
+
             previousState = currentState;
+            previousCursorMode = Cursor.lockState;
+
             currentState = mapName;
 
             foreach (var map in maps.Values)
@@ -106,13 +123,7 @@ namespace ASUL.InputSystem
                 return;
             }
 
-            if (previousState == "Player")
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-
-            ChangeInputMap(previousState);
+            ChangeInputMap(previousState, previousCursorMode);
         }
 
         public IEnumerable<string> GetAvailableMaps() => maps.Keys;
