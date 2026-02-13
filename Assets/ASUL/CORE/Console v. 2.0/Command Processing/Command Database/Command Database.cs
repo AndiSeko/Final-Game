@@ -1,3 +1,4 @@
+using ASUL.InputSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -115,6 +116,19 @@ namespace ASUL.Console
             {
                 viewer.ClearConsole();
             }
+        }
+
+        private void InputMaps()
+        {
+            foreach (string map in InputManager.Instance.GetAvailableMaps())
+            {
+                if (map == InputManager.Instance.CurrentState)
+                {
+                    ConsoleViewer.OnConsoleLog?.Invoke($"<style=Miku>{map}</style>");
+                    continue;
+                }
+                ConsoleViewer.OnConsoleLog?.Invoke($"{map}");
+            } 
         }
 
         #endregion

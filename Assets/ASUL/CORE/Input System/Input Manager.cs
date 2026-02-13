@@ -7,7 +7,7 @@ namespace ASUL.InputSystem
     public class InputManager : MonoBehaviour
     {
         private string defaultInputMap = "Player";
-        private CursorLockMode defaultCursorLockMode = CursorLockMode.Locked;
+        private CursorLockMode defaultCursorLockMode = CursorLockMode.None;
 
         private string previousState;
         private CursorLockMode previousCursorMode;
@@ -22,7 +22,7 @@ namespace ASUL.InputSystem
 
         private Dictionary<string, InputActionMap> maps;
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         public static void Init()
         {
             if (Instance != null) return;
@@ -47,6 +47,18 @@ namespace ASUL.InputSystem
             foreach (var map in actions.asset.actionMaps)
             {
                 maps[map.name] = map;
+            }
+
+            var defaultInputConfiguration = Resources.Load<InputConfiguration>("Default Input Configuration");
+
+            if (defaultInputConfiguration != null)
+            {
+                defaultInputMap = defaultInputConfiguration.DefaultInputMap;
+                defaultCursorLockMode = defaultInputConfiguration.DefaultCursorLockMode;
+            }
+            else
+            {
+                Debug.LogError("Нет файла конфигурации!");
             }
 
             ChangeInputMap(defaultInputMap, defaultCursorLockMode);
@@ -79,12 +91,8 @@ namespace ASUL.InputSystem
             previousState = currentState;
             previousCursorMode = Cursor.lockState;
 
-            currentState = mapName;
+            SetInputMap(mapName);
 
-            foreach (var map in maps.Values)
-                map.Disable();
-
-            maps[mapName].Enable();
         }
 
         public void ChangeInputMap(string mapName, CursorLockMode cursorLockMode)
@@ -104,15 +112,20 @@ namespace ASUL.InputSystem
             previousState = currentState;
             previousCursorMode = Cursor.lockState;
 
+            SetInputMap(mapName);
+
+            Cursor.lockState = cursorLockMode;
+            Cursor.visible = cursorLockMode != CursorLockMode.Locked;
+        }
+
+        private void SetInputMap(string mapName)
+        {
             currentState = mapName;
 
             foreach (var map in maps.Values)
                 map.Disable();
 
             maps[mapName].Enable();
-
-            Cursor.lockState = cursorLockMode;
-            Cursor.visible = cursorLockMode != CursorLockMode.Locked;
         }
 
         public void RevertToPreviousMap()
