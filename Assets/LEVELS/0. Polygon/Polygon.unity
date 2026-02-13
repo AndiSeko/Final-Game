@@ -15842,7 +15842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489648019}
-  - component: {fileID: 489648018}
+  - component: {fileID: 489648020}
   m_Layer: 0
   m_Name: Player Scene Initialyzer
   m_TagString: Untagged
@@ -15850,20 +15850,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &489648018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 489648017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a67014ee239513441add01bc645388ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerVisibilityState: 0
-  preset: 0
 --- !u!4 &489648019
 Transform:
   m_ObjectHideFlags: 0
@@ -15879,6 +15865,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &489648020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489648017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23cae0bc94eae354cb982986664055e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultInputMap: Player
+  defaultCursorLockMode: 1
+  playerVisibilityState: 0
+  preset: 0
 --- !u!1001 &490345991
 PrefabInstance:
   m_ObjectHideFlags: 0

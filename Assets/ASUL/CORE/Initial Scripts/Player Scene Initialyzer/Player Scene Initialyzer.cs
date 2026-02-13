@@ -1,18 +1,15 @@
 using ASUL.InputSystem;
-using ASUL.NPC.PlayerDetection;
 using UnityEngine;
 
 namespace ASUL.InitialScripts{
     public class PlayerSceneInitialyzer : MonoBehaviour
     {
-        [SerializeField] private PlayerVisibilityState playerVisibilityState = PlayerVisibilityState.Default;
-        [SerializeField] private CSetPreset.Preset preset = CSetPreset.Preset.Play;
+        [SerializeField] private string defaultInputMap = "Player";
+        [SerializeField] private CursorLockMode defaultCursorLockMode = CursorLockMode.None;
 
-        private void Start()
+        private protected virtual void Start()
         {
-            InputManager.Instance.ChangeInputMap("Player", CursorLockMode.Locked);
-            PlayerVisibilityManager.PlayerVisibilityState = playerVisibilityState;
-            CSetPreset.SetByValue(preset);
+            InputManager.Instance.ChangeInputMap(defaultInputMap, defaultCursorLockMode);
         }
     }
 
