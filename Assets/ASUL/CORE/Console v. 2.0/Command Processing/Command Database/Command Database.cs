@@ -35,6 +35,8 @@ namespace ASUL.Console
             new()
             {
                 {"info", (cmd) => Info()},
+                {"inputmaps", (cmd) => InputMaps()},
+                {"help", (cmd) => Help()},
                 {"clear", (cmd) => Clear()}
             };
 
@@ -96,7 +98,7 @@ namespace ASUL.Console
 
             ConsoleViewer.OnConsoleLog?.Invoke("<style=Console><color=#36CF8C>Console v 2.0</color></style>" +
                 "\nCreated by Andi Seko" +
-                "\n© ASUL 2025" +
+                "\n© ASUL 2026" +
                 "\nFor additional information, read the documentation by pressing the f1 key." +
                 "\n\n<style=Miku>Game Info</style>" +
                 $"\nApplication Name: {Application.productName}" +
@@ -120,14 +122,21 @@ namespace ASUL.Console
 
         private void InputMaps()
         {
+            ConsoleViewer.OnConsoleLog?.Invoke("<style=Miku>Input maps:</style>");
+
             foreach (string map in InputManager.Instance.GetAvailableMaps())
             {
-                if (map == InputManager.Instance.CurrentState)
-                {
-                    ConsoleViewer.OnConsoleLog?.Invoke($"<style=Miku>{map}</style>");
-                    continue;
-                }
                 ConsoleViewer.OnConsoleLog?.Invoke($"{map}");
+            } 
+        }
+
+        private void Help()
+        {
+            ConsoleViewer.OnConsoleLog?.Invoke("<style=Miku>List of existing commands:</style>");
+
+            foreach (var key in CommandDictionary.Keys)
+            {
+                ConsoleViewer.OnConsoleLog?.Invoke($"{key}");
             } 
         }
 
